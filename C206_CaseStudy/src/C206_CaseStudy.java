@@ -1,9 +1,9 @@
 
 public class C206_CaseStudy {
-//yc333
+//wq
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 }
