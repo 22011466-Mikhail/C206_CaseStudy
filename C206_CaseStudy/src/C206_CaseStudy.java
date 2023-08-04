@@ -1,6 +1,6 @@
 
 public class C206_CaseStudy {
-//wqw
+//wqwa
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
