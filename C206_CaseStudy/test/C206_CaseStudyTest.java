@@ -12,9 +12,11 @@ public class C206_CaseStudyTest {
 	private Enrolment en3;
 
 	private ArrayList<Enrolment> EnrolmentList;
+	private ArrayList<Fee> feeList;
 
 	@Before
 	public void setUp() throws Exception {
+		feeList = new ArrayList<Fee>();
 	}
 
 	public void testAddEnrolment() {
@@ -39,7 +41,47 @@ public class C206_CaseStudyTest {
 		Camcorder cc_missing = new Camcorder("CC0014", "", 60);
 		C206_CaseStudy.addCamcorder(EnrolmentList, cc_missing);
 		assertEquals("Test that the Enrolment arraylist size is unchange.", 2, EnrolmentList.size());
-	}
+	}@Test
+    public void testAddFee() {
+        // Test that feeList is initially empty
+        assertEquals("Test that feeList is empty", 0, feeList.size());
+
+        // Add a fee
+        C206_CaseStudy.addFee(feeList, "Tuition Fee", 1000.0, "2023-09-01");
+        assertEquals("Test that feeList size is 1", 1, feeList.size());
+
+        // Add another fee
+        C206_CaseStudy.addFee(feeList, "Exam Fee", 500.0, "2023-10-01");
+        assertEquals("Test that feeList size is 2", 2, feeList.size());
+        
+    }@Test
+    public void testViewAllFees() {
+        // Add fees to feeList
+        feeList.add(new Fee("Tuition Fee", 1000.0, "2023-09-01"));
+        feeList.add(new Fee("Exam Fee", 500.0, "2023-10-01"));
+
+        // Test viewing all fees
+        String expectedOutput = "FEE TYPE             AMOUNT     DUE DATE       \n" +
+                                "Tuition Fee          1000.00    2023-09-01    \n" +
+                                "Exam Fee             500.00     2023-10-01    \n";
+        assertEquals("Test viewing all fees", expectedOutput, C206_CaseStudy.viewAllFees(feeList));
+    }
+
+    @Test
+    public void testDeleteFee() {
+        // Add fees to feeList
+        feeList.add(new Fee("Tuition Fee", 1000.0, "2023-09-01"));
+        feeList.add(new Fee("Exam Fee", 500.0, "2023-10-01"));
+
+        // Delete a fee
+        C206_CaseStudy.deleteFee(feeList, 0);
+        assertEquals("Test that feeList size is 1 after deleting", 1, feeList.size());
+
+        // Delete another fee
+        C206_CaseStudy.deleteFee(feeList, 0);
+        assertEquals("Test that feeList size is 0 after deleting", 0, feeList.size());
+    }
+	
 
 	public void testRetrieveAllCamcorder() {
 		// Test Case 1
