@@ -156,6 +156,19 @@ public class C206_CaseStudy {
 		}
 	}
 
+	public static String retrieveAllCourse(ArrayList<Course> courseList) {
+		String result = "Course List\n";
+		String format = "%-5s %-15s %-20s %-30s\n";
+		result += String.format(format, "ID", "Title", "Instructor", "Schedule");
+
+		for (Course course : courseList) {
+			result += String.format(format, course.getCourseCode(), course.getTitle(), course.getInstructor(),
+					course.getSchedule());
+		}
+
+		return result;
+	}
+
 	public static void viewAllCourse(ArrayList<Course> courseList) {
 		System.out.println("Course List");
 		String format = "%-5s %-15s %-20s %-30s\n";

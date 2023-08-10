@@ -10,13 +10,70 @@ public class C206_CaseStudyTest {
 	private Enrolment en1;
 	private Enrolment en2;
 	private Enrolment en3;
+	private Course C01;
+	private Course C02;
 
 	private ArrayList<Enrolment> EnrolmentList;
+<<<<<<< HEAD
 	private ArrayList<Fee> feeList;
+=======
+	private ArrayList<Course> courseList;
+
+	public C206_CaseStudyTest() {
+		super();
+	}
+>>>>>>> branch 'master' of https://github.com/22011466-Mikhail/C206_CaseStudy.git
 
 	@Before
 	public void setUp() throws Exception {
+<<<<<<< HEAD
 		feeList = new ArrayList<Fee>();
+=======
+		C01 = new Course("C01", "Mathematics", "Adam Salah", "Every Saturday at 5.00pm to 7.00pm");
+		C02 = new Course("C02", "English", "Alice Lum", "Every Sunday at 7.00pm to 9.00pm");
+		courseList = new ArrayList<Course>();
+	}
+
+	@Test
+	public void testAddCourse() {
+		// Test if courseList is not null and empty
+		assertNotNull("Test if there is a valid courseList to add to", courseList);
+		assertEquals("Test that the courseList is empty.", 0, courseList.size());
+
+		// Add a course and verify
+		C206_CaseStudy.addCourse(courseList, C01);
+		assertEquals("Test that the courseList size is 1.", 1, courseList.size());
+		assertSame("Test that the added course is the same as the first course in the list", C01, courseList.get(0));
+	}
+
+	@Test
+	public void testViewCourse() {
+		// Test if courseList is not null and empty - boundary
+		assertNotNull("Test if there is valid courseList to retrieve course from", courseList);
+
+		// Given an empty list, after adding 2 courses, test if the size of the list is
+		// 2 - normal
+		C206_CaseStudy.addCourse(courseList, C01);
+		C206_CaseStudy.addCourse(courseList, C02);
+		assertEquals("Test that course list size is 2", 2, courseList.size());
+
+		// Call the method to view courses
+		C206_CaseStudy.viewAllCourse(courseList);
+	}
+
+	@Test
+	public void testDeleteCourse() {
+		// Add courses to courseList
+		courseList.add(C01);
+		courseList.add(C02);
+
+		// Delete a course
+		C206_CaseStudy.deleteCourse(courseList);
+		assertEquals("Test that the courseList size is reduced after deletion.", 1, courseList.size());
+
+		// Verify the remaining course
+		assertSame("Test that the remaining course is the second course in the list", C02, courseList.get(0));
+>>>>>>> branch 'master' of https://github.com/22011466-Mikhail/C206_CaseStudy.git
 	}
 
 	public void testAddEnrolment() {
