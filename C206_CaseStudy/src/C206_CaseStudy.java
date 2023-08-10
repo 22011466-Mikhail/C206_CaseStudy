@@ -8,7 +8,46 @@ public class C206_CaseStudy {
 		// TODO Auto-generated method stub
 		
 		 ArrayList<Fee> feeList = new ArrayList<>();
+		 ArrayList<Enrolment> EnrolmentList = new ArrayList<Enrolment>();
 	    addFee(feeList, "Tuition Fee", 1000.0, "2023-09-01");
+	    
+	    int option = 0;
+
+		while (option != 5) {
+
+			C206_CaseStudy.menu();
+			option = Helper.readInt("Enter an option > ");
+
+			if (option == 1) {
+				// View all items
+
+			} else if (option == 2) {
+				// Add a new item
+
+
+			} else if (option == 3) {
+				// Loan item
+
+			}else if(option ==4) {
+				
+
+			} else if (option == 5) {
+				System.out.println("Bye!");
+			} else {
+				System.out.println("Invalid option");
+			}
+
+		}
+	}
+	public static void menu() {
+		C206_CaseStudy.setHeader("TUITION CENTRE APP");
+		System.out.println("1. ");
+		System.out.println("2. ");
+		System.out.println("3. ");
+		System.out.println("4. ");
+		System.out.println("5. Quit");
+		Helper.line(80, "-");
+
 	}
 
 	public static void setHeader(String header) {
@@ -50,10 +89,10 @@ public class C206_CaseStudy {
 		System.out.println(output);
 	}
 
-	public static void addEnrolment(ArrayList<Enrolment> camcorderList, Enrolment en) {
+	public static void addEnrolment(ArrayList<Enrolment> EnrolmentList, Enrolment en) {
 		Camcorder Enrolment;
-		for (int i = 0; i < camcorderList.size(); i++) {
-			Enrolment = camcorderList.get(i);
+		for (int i = 0; i < EnrolmentList.size(); i++) {
+			Enrolment = EnrolmentList.get(i);
 			if (Enrolment.getid().equalsIgnoreCase(en.getid()))
 				return;
 		}
@@ -61,7 +100,16 @@ public class C206_CaseStudy {
 			return;
 		}
 
-		camcorderList.add(en);
+		EnrolmentList.add(en);
+	}
+	
+	public static void deleteEnrolment(ArrayList<Enrolment> EnrolmentList, int index) {
+		if (index >= 0 && index < EnrolmentList.size()) {
+			EnrolmentList.remove(index);
+			System.out.println("Enrolment deleted successfully.");
+		} else {
+			System.out.println("Invalid Enrolment ID.");
+		}
 	}
 
 	public static void addFee(ArrayList<Fee> feeList, String feeType, double amount, String dueDate) {
