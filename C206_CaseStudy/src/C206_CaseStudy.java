@@ -9,6 +9,8 @@ public class C206_CaseStudy {
 		ArrayList<Fee> feeList = new ArrayList<Fee>();
 		ArrayList<Course> courseList = new ArrayList<Course>();
 		ArrayList<Enrolment> EnrolmentList = new ArrayList<Enrolment>();
+		ArrayList<Student> StudentList = new ArrayList<Student>();
+		StudentList.add(new Student("Adam Salah","2003-08-25","M7654","Mathematics",83435469));
 
 		feeList.add(new Fee("Tuition Fee", 1000.0, "2023-09-01"));
 
@@ -180,6 +182,15 @@ public class C206_CaseStudy {
 					course.getSchedule());
 		}
 	}
+		public static void viewStudentList(ArrayList<Student>StudentList) {
+			System.out.println("Student List");
+			String format= "%-15s %-15s %-10s %-30s %-15s\n";
+			System.out.printf(format,"Name","DOB","NRIC","Course","Contact Number");
+			for(Student student:StudentList) {
+				System.out.printf(format,student.getName(),student.getDob(),student.getNric(),student.getCourse(),student.getContactNumber());;
+			}
+		}
+	
 
 	// ================================= Adding =================================
 	public static void addEnrolment(ArrayList<Enrolment> EnrolmentList, Enrolment en) {
@@ -215,6 +226,15 @@ public class C206_CaseStudy {
 	public static void addCourse(ArrayList<Course> courseList, Course course) {
 		courseList.add(course);
 	}
+	public static void addStudent(ArrayList<Student> StudentList) {
+		String name=Helper.readString("enter your name: ");
+		String dob=Helper.readString("Enter your date of birth: ");
+		String nric=Helper.readString("Enter your nric number: ");
+		String course=Helper.readString("Enter your desired course: ");
+		int contact=Helper.readInt("Enter your contact number: ");
+		StudentList.add(new Student(name,dob,nric,course,contact));
+		System.out.println("Student has been added");
+	}
 
 	// ================================= Deleting =================================
 	public static void deleteFee(ArrayList<Fee> feeList, int feeIndex) {
@@ -244,6 +264,18 @@ public class C206_CaseStudy {
 		if (!found) {
 			System.out.println("Course not found.");
 		}
+	}
+	public static void deleteStudent(ArrayList<Student>StudentList) {
+		viewStudentList(StudentList);
+		String nrictodelete=Helper.readString("Enter the nric number to be deleted: ");
+		for(Student student:StudentList) {
+			if(student.getNric().equalsIgnoreCase(nrictodelete)) {
+				StudentList.remove(student);
+				System.out.println("Student has been successfully deleted");
+				
+			}
+		}
+		
 	}
 
 }
