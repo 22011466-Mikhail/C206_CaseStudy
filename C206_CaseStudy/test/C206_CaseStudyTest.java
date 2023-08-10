@@ -22,8 +22,6 @@ public class C206_CaseStudyTest {
 	public C206_CaseStudyTest() {
 		super();
 	}
-
-
 	@Before
 	public void setUp() throws Exception {
 
@@ -33,7 +31,6 @@ public class C206_CaseStudyTest {
 		C02 = new Course("C02", "English", "Alice Lum", "Every Sunday at 7.00pm to 9.00pm");
 		courseList = new ArrayList<Course>();
 	}
-
 	@Test
 	public void testAddCourse() {
 		// Test if courseList is not null and empty
@@ -45,7 +42,6 @@ public class C206_CaseStudyTest {
 		assertEquals("Test that the courseList size is 1.", 1, courseList.size());
 		assertSame("Test that the added course is the same as the first course in the list", C01, courseList.get(0));
 	}
-
 	@Test
 	public void testViewCourse() {
 		// Test if courseList is not null and empty - boundary
@@ -60,7 +56,6 @@ public class C206_CaseStudyTest {
 		// Call the method to view courses
 		C206_CaseStudy.viewAllCourse(courseList);
 	}
-
 	@Test
 	public void testDeleteCourse() {
 		// Add courses to courseList
@@ -75,7 +70,7 @@ public class C206_CaseStudyTest {
 		assertSame("Test that the remaining course is the second course in the list", C02, courseList.get(0));
 
 	}
-
+	
 	public void testAddEnrolment() {
 		// Item list is not null and it is empty
 		assertNotNull("Test if there is valid Enrolment arraylist to add to", EnrolmentList);
@@ -98,7 +93,8 @@ public class C206_CaseStudyTest {
 		Camcorder cc_missing = new Camcorder("CC0014", "", 60);
 		C206_CaseStudy.addCamcorder(EnrolmentList, cc_missing);
 		assertEquals("Test that the Enrolment arraylist size is unchange.", 2, EnrolmentList.size());
-	}@Test
+	}
+	@Test
     public void testAddFee() {
         // Test that feeList is initially empty
         assertEquals("Test that feeList is empty", 0, feeList.size());
@@ -111,7 +107,8 @@ public class C206_CaseStudyTest {
         C206_CaseStudy.addFee(feeList, "Exam Fee", 500.0, "2023-10-01");
         assertEquals("Test that feeList size is 2", 2, feeList.size());
         
-    }@Test
+    }
+	@Test
     public void testViewAllFees() {
         // Add fees to feeList
         feeList.add(new Fee("Tuition Fee", 1000.0, "2023-09-01"));
@@ -133,8 +130,6 @@ public class C206_CaseStudyTest {
             assertEquals("Line " + (i+1) + " should match", expectedLines[i], actualLines[i]);
         }
     }
-
-
     @Test
     public void testDeleteFee() {
         // Add fees to feeList
@@ -150,7 +145,6 @@ public class C206_CaseStudyTest {
         assertEquals("Test that feeList size is 0 after deleting", 0, feeList.size());
     }
 	
-
 	public void testRetrieveAllCamcorder() {
 		// Test Case 1
 		// Test if Item list is not null and empty
@@ -186,11 +180,9 @@ public class C206_CaseStudyTest {
 		// Test that the details are displayed correctly
 		assertEquals("Test that the display is correct.", testOutput, allEnrolment);
 	}
-
 	@After
 	public void tearDown() throws Exception {
 	}
-
 	@Test
 	public void c206_test() {
 		// fail("Not yet implemented");
