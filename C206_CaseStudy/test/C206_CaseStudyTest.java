@@ -126,7 +126,27 @@ public class C206_CaseStudyTest {
 		
 		assertEquals(expectedOutput, actualOutput.trim());
 		}
+		/*
+		//Test Case 2
+		// Attempt to retrieve the Camcoders 
+		allCamcorder= ResourceCentre.retrieveAllCamcorder(camcorderList);
+		testOutput = String.format("%-10s %-30s %-10s %-10s %-20d\n","CC0011", "Nikon HDSLR", "Yes", "", 40);
+		testOutput += String.format("%-10s %-30s %-10s %-10s %-20d\n","CC0012", "Sony DSC-RX100M7", "Yes", "", 20);
+		// Test that the details are displayed correctly
+		assertEquals("Test that the display is correct.", testOutput, allCamcorder);
 
+		//Test Case 3
+		cc3.setIsAvailable(false);
+		ResourceCentre.addCamcorder(camcorderList, cc3);
+		assertEquals("Test that Camcorder arraylist size is 2.", 3, camcorderList.size());
+		assertFalse("Test that the last item in the arraylist is not available", camcorderList.get(2).getIsAvailable());
+		// Attempt to retrieve the Camcoders 
+		allCamcorder= ResourceCentre.retrieveAllCamcorder(camcorderList);
+		testOutput = String.format("%-10s %-30s %-10s %-10s %-20d\n","CC0011", "Nikon HDSLR", "Yes", "", 40);
+		testOutput += String.format("%-10s %-30s %-10s %-10s %-20d\n","CC0012", "Sony DSC-RX100M7", "Yes", "", 20);
+		// Test that the details are displayed correctly
+		assertEquals("Test that the display is correct.", testOutput, allCamcorder);
+		*/
 
     @Test
     public void testDeleteFee() {
