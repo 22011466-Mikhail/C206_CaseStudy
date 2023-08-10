@@ -109,27 +109,25 @@ public class C206_CaseStudyTest {
         
     }
 	@Test
-    public void testViewAllFees() {
-        // Add fees to feeList
-        feeList.add(new Fee("Tuition Fee", 1000.0, "2023-09-01"));
-        feeList.add(new Fee("Exam Fee", 500.0, "2023-10-01"));
+	public void testViewAllFees() {
+	    // Add fees to feeList
+	    feeList.add(new Fee("Tuition Fee", 1000.0, "2023-09-01"));
+	    feeList.add(new Fee("Exam Fee", 500.0, "2023-10-01"));
 
-        // Test viewing all fees
-        String expectedOutput = "FEE TYPE             AMOUNT     DUE DATE       \n" +
-                                "Tuition Fee          1000.00    2023-09-01    \n" +
-                                "Exam Fee             500.00     2023-10-01    \n";
-        
-        String actualOutput = C206_CaseStudy.viewAllFees(feeList);
+	    // Test viewing all fees
+	    String expectedOutput = "FEE TYPE             AMOUNT     DUE DATE       \n" +
+                "Tuition Fee          1000.00    2023-09-01    \n" +
+                "Exam Fee             500.00     2023-10-01    \n";
 
-        String[] expectedLines = expectedOutput.split("\n");
-        String[] actualLines = actualOutput.split("\n");
+		String actualOutput = C206_CaseStudy.viewAllFees(feeList);
+		
+		System.out.println("Expected Output:\n" + expectedOutput);
+		System.out.println("Actual Output:\n" + actualOutput);
+		
+		assertEquals(expectedOutput, actualOutput.trim());
+		}
 
-        assertEquals("Number of lines should match", expectedLines.length, actualLines.length);
 
-        for (int i = 0; i < expectedLines.length; i++) {
-            assertEquals("Line " + (i+1) + " should match", expectedLines[i], actualLines[i]);
-        }
-    }
     @Test
     public void testDeleteFee() {
         // Add fees to feeList
