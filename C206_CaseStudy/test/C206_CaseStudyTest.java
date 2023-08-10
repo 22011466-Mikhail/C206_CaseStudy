@@ -14,21 +14,21 @@ public class C206_CaseStudyTest {
 	private Course C02;
 
 	private ArrayList<Enrolment> EnrolmentList;
-<<<<<<< HEAD
+
 	private ArrayList<Fee> feeList;
-=======
+
 	private ArrayList<Course> courseList;
 
 	public C206_CaseStudyTest() {
 		super();
 	}
->>>>>>> branch 'master' of https://github.com/22011466-Mikhail/C206_CaseStudy.git
+
 
 	@Before
 	public void setUp() throws Exception {
-<<<<<<< HEAD
+
 		feeList = new ArrayList<Fee>();
-=======
+
 		C01 = new Course("C01", "Mathematics", "Adam Salah", "Every Saturday at 5.00pm to 7.00pm");
 		C02 = new Course("C02", "English", "Alice Lum", "Every Sunday at 7.00pm to 9.00pm");
 		courseList = new ArrayList<Course>();
@@ -73,7 +73,7 @@ public class C206_CaseStudyTest {
 
 		// Verify the remaining course
 		assertSame("Test that the remaining course is the second course in the list", C02, courseList.get(0));
->>>>>>> branch 'master' of https://github.com/22011466-Mikhail/C206_CaseStudy.git
+
 	}
 
 	public void testAddEnrolment() {
@@ -121,8 +121,19 @@ public class C206_CaseStudyTest {
         String expectedOutput = "FEE TYPE             AMOUNT     DUE DATE       \n" +
                                 "Tuition Fee          1000.00    2023-09-01    \n" +
                                 "Exam Fee             500.00     2023-10-01    \n";
-        assertEquals("Test viewing all fees", expectedOutput, C206_CaseStudy.viewAllFees(feeList));
+        
+        String actualOutput = C206_CaseStudy.viewAllFees(feeList);
+
+        String[] expectedLines = expectedOutput.split("\n");
+        String[] actualLines = actualOutput.split("\n");
+
+        assertEquals("Number of lines should match", expectedLines.length, actualLines.length);
+
+        for (int i = 0; i < expectedLines.length; i++) {
+            assertEquals("Line " + (i+1) + " should match", expectedLines[i], actualLines[i]);
+        }
     }
+
 
     @Test
     public void testDeleteFee() {

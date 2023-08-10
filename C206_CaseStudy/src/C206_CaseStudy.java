@@ -147,13 +147,13 @@ public class C206_CaseStudy {
 		System.out.println(output);
 	}
 
-	public static void viewAllFees(ArrayList<Fee> feeList) {
-		System.out.print(String.format("%-20s %-10s %-15s\n", "FEE TYPE", "AMOUNT", "DUE DATE"));
+	public static String viewAllFees(ArrayList<Fee> feeList) {
+		String output = String.format("%-20s %-10s %-15s\n", "FEE TYPE", "AMOUNT", "DUE DATE");
 
 		for (Fee fee : feeList) {
-			System.out
-					.print(String.format("%-20s %-10.2f %-15s\n", fee.getFeeType(), fee.getAmount(), fee.getDueDate()));
+			output += String.format("%-20s %-10.2f %-15s\n", fee.getFeeType(), fee.getAmount(), fee.getDueDate());
 		}
+		return output;
 	}
 
 	public static String retrieveAllCourse(ArrayList<Course> courseList) {

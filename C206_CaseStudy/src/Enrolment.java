@@ -26,7 +26,7 @@ public class Enrolment  {
 	public boolean getIsAvailable(){
 		return isAvailable;
 	}
-	public void setIsAvailablw(boolean isAvailable) {
+	public void setIsAvailable(boolean isAvailable) {
 		this.isAvailable = isAvailable;
 	}
 }
