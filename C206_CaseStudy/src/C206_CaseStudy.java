@@ -6,11 +6,6 @@ public class C206_CaseStudy {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
-		
-
-
-
 		ArrayList<Fee> feeList = new ArrayList<Fee>();
 		ArrayList<Course> courseList = new ArrayList<Course>();
 		ArrayList<Enrolment> EnrolmentList = new ArrayList<Enrolment>();
@@ -57,39 +52,45 @@ public class C206_CaseStudy {
 					C206_CaseStudy.deleteCourse(courseList);
 
 				} else if (option2 == 4) {
-					C206_CaseStudy.addFee(feeList, null, option2, null);
-					System.out.println("Fee added");
+					String feeType = Helper.readString("Enter Fee Type (Tuition Fee/Exam Fee): ");
+					double amount = Helper.readDouble("Enter Amount: ");
+					String dueDate = Helper.readString("Enter Due Date(YYYY-mm-dd): ");
+
+					C206_CaseStudy.addFee(feeList, feeType, amount, dueDate);
 
 				} else if (option2 == 5) {
 					C206_CaseStudy.viewAllFees(feeList);
 
 				} else if (option2 == 6) {
-					C206_CaseStudy.deleteFee(feeList, option2);
+					C206_CaseStudy.viewAllFees(feeList);
 
-				} else if (option == 2) {
-
-				} else if (option == 3) {
-					Helper.line(80, "-");
-					System.out.println("1. Add enrolment");
-					System.out.println("2. View enrolment");
-					System.out.println("3. Delete enrolment");
-					Helper.line(80, "-");
-
-					int option3 = Helper.readInt("Enter an option > ");
-
-					if (option3 == 1) {
-
-					} else if (option3 == 2) {
-						C206_CaseStudy.viewAllEnrolment(EnrolmentList);
-
-					} else if (option3 == 3) {
-					}
-
-				} else if (option == 4) {
-					System.out.println("Bye!");
-				} else {
-					System.out.println("Invalid option");
+					int feeIndexToDelete = Helper.readInt("Enter the index of the fee to delete: ");
+					C206_CaseStudy.deleteFee(feeList, feeIndexToDelete);
 				}
+
+			} else if (option == 2) {
+
+			} else if (option == 3) {
+				Helper.line(80, "-");
+				System.out.println("1. Add enrolment");
+				System.out.println("2. View enrolment");
+				System.out.println("3. Delete enrolment");
+				Helper.line(80, "-");
+
+				int option3 = Helper.readInt("Enter an option > ");
+
+				if (option3 == 1) {
+
+				} else if (option3 == 2) {
+					C206_CaseStudy.viewAllEnrolment(EnrolmentList);
+
+				} else if (option3 == 3) {
+				}
+
+			} else if (option == 4) {
+				System.out.println("Bye!");
+			} else {
+				System.out.println("Invalid option");
 			}
 		}
 	}
@@ -122,7 +123,8 @@ public class C206_CaseStudy {
 		return avail;
 	}
 
-	// ================================= View items =================================
+	// ================================= View items
+	// =================================
 	public static String retrieveAllEnrolment(ArrayList<Enrolment> EnrolmentList) {
 		String output = "";
 
@@ -145,16 +147,12 @@ public class C206_CaseStudy {
 		System.out.println(output);
 	}
 
-
-
-
 	public static void viewAllFees(ArrayList<Fee> feeList) {
-		System.out.println("Fee List");
-		String format = "%-20s %-10s %-15s\n";
-		System.out.printf(format, "FEE TYPE", "AMOUNT", "DUE DATE");
+		System.out.print(String.format("%-20s %-10s %-15s\n", "FEE TYPE", "AMOUNT", "DUE DATE"));
 
 		for (Fee fee : feeList) {
-			System.out.printf(format, fee.getFeeType(), fee.getAmount(), fee.getDueDate());
+			System.out
+					.print(String.format("%-20s %-10.2f %-15s\n", fee.getFeeType(), fee.getAmount(), fee.getDueDate()));
 		}
 	}
 
@@ -171,10 +169,10 @@ public class C206_CaseStudy {
 
 	// ================================= Adding =================================
 	public static void addEnrolment(ArrayList<Enrolment> EnrolmentList, Enrolment en) {
-		
+
 		EnrolmentList.add(en);
 	}
-	
+
 	public static void deleteEnrolment(ArrayList<Enrolment> EnrolmentList, int index) {
 		if (index >= 0 && index < EnrolmentList.size()) {
 			EnrolmentList.remove(index);
@@ -189,7 +187,7 @@ public class C206_CaseStudy {
 		feeList.add(newFee);
 		System.out.println("Fee added successfully.");
 	}
-	
+
 	public static Course inputCourse() {
 		String id = Helper.readString("Enter Course ID: ");
 		String title = Helper.readString("Enter Course Title: ");
@@ -205,40 +203,33 @@ public class C206_CaseStudy {
 	}
 
 	// ================================= Deleting =================================
-	public static void deleteFee(ArrayList<Fee> feeList, int index) {
-		if (index >= 0 && index < feeList.size()) {
-			feeList.remove(index);
+	public static void deleteFee(ArrayList<Fee> feeList, int feeIndex) {
+		if (feeIndex >= 0 && feeIndex < feeList.size()) {
+			feeList.remove(feeIndex);
 			System.out.println("Fee deleted successfully.");
 		} else {
 			System.out.println("Invalid fee index.");
 		}
 	}
+
 	public static void deleteCourse(ArrayList<Course> courseList) {
-	    viewAllCourse(courseList);
-	    
-	    String courseCodeToDelete = Helper.readString("Enter the code of the course to delete: ");
-	    
-	    boolean found = false;
-	    for (Course course : courseList) {
-	        if (course.getCourseCode().equalsIgnoreCase(courseCodeToDelete)) {
-	            courseList.remove(course);
-	            System.out.println("Course deleted successfully.");
-	            found = true;
-	            break;
-	        }
-	    }
-	    
-	    if (!found) {
-	        System.out.println("Course not found.");
-	    }
+		viewAllCourse(courseList);
+
+		String courseCodeToDelete = Helper.readString("Enter the code of the course to delete: ");
+
+		boolean found = false;
+		for (Course course : courseList) {
+			if (course.getCourseCode().equalsIgnoreCase(courseCodeToDelete)) {
+				courseList.remove(course);
+				System.out.println("Course deleted successfully.");
+				found = true;
+				break;
+			}
+		}
+
+		if (!found) {
+			System.out.println("Course not found.");
+		}
 	}
-	
-
-
-
-
-
-
-	
 
 }
