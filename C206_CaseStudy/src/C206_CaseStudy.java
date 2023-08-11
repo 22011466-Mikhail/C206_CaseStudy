@@ -476,7 +476,7 @@ public class C206_CaseStudy {
 			}
 		}
 		
-	}
+	
 	
 	public static void deleteEnrolment(ArrayList<Enrolment> EnrolmentList, int index) {
 		if (index >= 0 && index < EnrolmentList.size()) {
