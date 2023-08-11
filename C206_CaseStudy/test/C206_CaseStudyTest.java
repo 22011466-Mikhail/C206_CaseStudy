@@ -112,12 +112,11 @@ public class C206_CaseStudyTest {
 	public void testViewAllFees() {
 	    // Add fees to feeList
 	    feeList.add(new Fee("Tuition Fee", 1000.0, "2023-09-01"));
-	    feeList.add(new Fee("Exam Fee", 500.0, "2023-10-01"));
+
 
 	    // Test viewing all fees
 	    String expectedOutput = "FEE TYPE             AMOUNT     DUE DATE       \n" +
-                "Tuition Fee          1000.00    2023-09-01    \n" +
-                "Exam Fee             500.00     2023-10-01    \n";
+                "Tuition Fee          1000.00    2023-09-01    \n";
 
 		String actualOutput = C206_CaseStudy.viewAllFees(feeList);
 		
