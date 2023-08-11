@@ -4,6 +4,7 @@ public class C206_CaseStudy {
 //ycc
 //jay
 //hakim
+//Norhilman
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -128,8 +129,7 @@ public class C206_CaseStudy {
 		return avail;
 	}
 
-	// ================================= View items
-	// =================================
+	// ================================= View items =================================
 	public static String retrieveAllEnrolment(ArrayList<Enrolment> EnrolmentList) {
 		String output = "";
 

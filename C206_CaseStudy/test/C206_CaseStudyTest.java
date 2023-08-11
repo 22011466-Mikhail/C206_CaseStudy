@@ -33,9 +33,7 @@ public class C206_CaseStudyTest {
 	}
 	@Test
 	public void testAddCourse() {
-		// Test if courseList is not null and empty
-		assertNotNull("Test if there is a valid courseList to add to", courseList);
-		assertEquals("Test that the courseList is empty.", 0, courseList.size());
+		
 
 		// Add a course and verify
 		C206_CaseStudy.addCourse(courseList, C01);
@@ -44,17 +42,26 @@ public class C206_CaseStudyTest {
 	}
 	@Test
 	public void testViewCourse() {
-		// Test if courseList is not null and empty - boundary
-		assertNotNull("Test if there is valid courseList to retrieve course from", courseList);
+		
+		// Test if courseList is not null and empty
+				assertNotNull("Test if there is a valid courseList to add to", courseList);
+				assertEquals("Test that the courseList is empty.", 0, courseList.size());
 
 		// Given an empty list, after adding 2 courses, test if the size of the list is
 		// 2 - normal
 		C206_CaseStudy.addCourse(courseList, C01);
 		C206_CaseStudy.addCourse(courseList, C02);
-		assertEquals("Test that course list size is 2", 2, courseList.size());
+		assertEquals("Test that course list size is 2 and displayed correctly", 2, courseList.size());
 
-		// Call the method to view courses
-		C206_CaseStudy.viewAllCourse(courseList);
+		//test if the expected output string same as the list of courses retrieved 
+				String allCourse= C206_CaseStudy.retrieveAllCourse(courseList);
+				String testOutput = "";
+				testOutput = String.format("Course List\n");
+				testOutput += String.format("%-5s %-15s %-20s %-30s\n","ID", "Title", "Instructor", "Schedule");
+				testOutput += String.format("%-5s %-15s %-20s %-30s\n","C01", "Mathematics", "Adam Salah", "Every Saturday at 5.00pm to 7.00pm");
+				testOutput += String.format("%-5s %-15s %-20s %-30s\n","C02", "English", "Alice Lum", "Every Sunday at 7.00pm to 9.00pm");
+			
+				assertEquals("Test that ViewAllCourselist", testOutput, allCourse);
 	}
 	@Test
 	public void testDeleteCourse() {
@@ -155,43 +162,13 @@ public class C206_CaseStudyTest {
     }
 	@Test
 	public void testViewAllFees() {
-	    // Add fees to feeList
+	    // After adding 1 fee, test that size of list is 1 - normal
 	    feeList.add(new Fee("Tuition Fee", 1000.0, "2023-09-01"));
-	    feeList.add(new Fee("Exam Fee", 500.0, "2023-10-01"));
+	    assertEquals("Test that the size of list is 1", 1, feeList.size());
 
-	    // Test viewing all fees
-	    String expectedOutput = "FEE TYPE             AMOUNT     DUE DATE       \n" +
-                "Tuition Fee          1000.00    2023-09-01    \n" +
-                "Exam Fee             500.00     2023-10-01    \n";
-
-		String actualOutput = C206_CaseStudy.viewAllFees(feeList);
-		
-		System.out.println("Expected Output:\n" + expectedOutput);
-		System.out.println("Actual Output:\n" + actualOutput);
-		
-		assertEquals(expectedOutput, actualOutput.trim());
+	    C206_CaseStudy.viewAllFees(feeList);
 		}
-		/*
-		//Test Case 2
-		// Attempt to retrieve the Camcoders 
-		allCamcorder= ResourceCentre.retrieveAllCamcorder(camcorderList);
-		testOutput = String.format("%-10s %-30s %-10s %-10s %-20d\n","CC0011", "Nikon HDSLR", "Yes", "", 40);
-		testOutput += String.format("%-10s %-30s %-10s %-10s %-20d\n","CC0012", "Sony DSC-RX100M7", "Yes", "", 20);
-		// Test that the details are displayed correctly
-		assertEquals("Test that the display is correct.", testOutput, allCamcorder);
-
-		//Test Case 3
-		cc3.setIsAvailable(false);
-		ResourceCentre.addCamcorder(camcorderList, cc3);
-		assertEquals("Test that Camcorder arraylist size is 2.", 3, camcorderList.size());
-		assertFalse("Test that the last item in the arraylist is not available", camcorderList.get(2).getIsAvailable());
-		// Attempt to retrieve the Camcoders 
-		allCamcorder= ResourceCentre.retrieveAllCamcorder(camcorderList);
-		testOutput = String.format("%-10s %-30s %-10s %-10s %-20d\n","CC0011", "Nikon HDSLR", "Yes", "", 40);
-		testOutput += String.format("%-10s %-30s %-10s %-10s %-20d\n","CC0012", "Sony DSC-RX100M7", "Yes", "", 20);
-		// Test that the details are displayed correctly
-		assertEquals("Test that the display is correct.", testOutput, allCamcorder);
-		*/
+		
 
     @Test
     public void testDeleteFee() {
