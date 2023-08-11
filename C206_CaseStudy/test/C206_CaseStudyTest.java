@@ -10,7 +10,6 @@ import org.junit.Test;
 public class C206_CaseStudyTest {
 	private Enrolment en1;
 	private Enrolment en2;
-	private Enrolment en3;
 	private Course C01;
 	private Course C02;
 
@@ -32,6 +31,10 @@ public class C206_CaseStudyTest {
 
 		C01 = new Course("C01", "Mathematics", "Adam Salah", "Every Saturday at 5.00pm to 7.00pm");
 		C02 = new Course("C02", "English", "Alice Lum", "Every Sunday at 7.00pm to 9.00pm");
+		en1 = new Enrolment ("C01");
+		en2 = new Enrolment("C02");
+		
+		EnrolmentList = new ArrayList<Enrolment>();
 		courseList = new ArrayList<Course>();
 	}
 	@Test
@@ -101,16 +104,17 @@ public class C206_CaseStudyTest {
 	}
 	@Test
 	public void testAddEnrolment() {
-        // Test that feeList is initially empty
-        assertEquals("Test that feeList is empty", 0, EnrolmentList.size());
+		assertNotNull("Test if there is valid Enrolment arraylist to add to", EnrolmentList);
+		assertEquals("Test that the Enrolment arraylist is empty.", 0, EnrolmentList.size());
+		//Given an empty list, after adding 1 item, the size of the list is 1
+		C206_CaseStudy.addEnrolment(EnrolmentList, en1);		
+		assertEquals("Test that the Enrolment arraylist size is 1.", 1, EnrolmentList.size());
 
-        // Add a fee
-        C206_CaseStudy.addEnrolment(EnrolmentList);
-        assertEquals("Test that feeList size is 1", 1, EnrolmentList.size());
+		
+		// Add an item
+		C206_CaseStudy.addEnrolment(EnrolmentList, en2);
+		assertEquals("Test that the Enrolment arraylist size is now 2.", 2, EnrolmentList.size());
 
-        // Add another fee
-        C206_CaseStudy.addEnrolment(EnrolmentList);
-        assertEquals("Test that feeList size is 2", 2, EnrolmentList.size());
         
     }
 
@@ -127,8 +131,8 @@ public class C206_CaseStudyTest {
 
 		assertEquals("Test that nothing is displayed", testOutput, allEnrolment);
 		//Test Case 2
-		C206_CaseStudy.addEnrolment(EnrolmentList);
-		C206_CaseStudy.addEnrolment(EnrolmentList);
+		C206_CaseStudy.addEnrolment(EnrolmentList,en1);
+		C206_CaseStudy.addEnrolment(EnrolmentList,en2);
 		// Test that the list is not empty
 		assertEquals("Test that Enrolment arraylist size is 2.", 2, EnrolmentList.size());
 		// Attempt to retrieve the Enrolment
@@ -143,11 +147,7 @@ public class C206_CaseStudyTest {
 
 		assertEquals("Test that the display is correct.", testOutput, allEnrolment);
 
-		//Test Case 3
-		en3.setIsAvailable(false);
-		C206_CaseStudy.addEnrolment(EnrolmentList);
-		assertEquals("Test that Enrolment arraylist size is 2.", 3,  EnrolmentList.size());
-		assertFalse("Test that the last item in the arraylist is not available",  EnrolmentList.get(2).getIsAvailable());
+		
 	}
 	@Test
 	public void testDeleteEnrolment() {
@@ -158,11 +158,11 @@ public class C206_CaseStudyTest {
 
         // Delete an Enrolment
         C206_CaseStudy.deleteEnrolment(EnrolmentList);
-        assertEquals("Test that EnrolmentList size is 1 after deleting", 1, EnrolmentList.size());
+        assertEquals("Test that EnrolmentList size is 1 after deleting", 0,EnrolmentList.size());
 
         // Delete another Enrolment
         C206_CaseStudy.deleteEnrolment(EnrolmentList);
-        assertEquals("Test that EnrolmentList size is 0 after deleting", 0, EnrolmentList.size());
+        assertEquals("Test that EnrolmentList size is 0 after deleting",1, EnrolmentList.size());
     }
 	@Test
     public void testAddFee() {

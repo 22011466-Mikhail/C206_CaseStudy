@@ -27,6 +27,7 @@ public class C206_CaseStudy {
 
 		courseList.add(new Course("C01", "Mathematics", "Adam Salah", "Every Saturday at 5.00pm to 7.00pm"));
 		courseList.add(new Course("C02", "English", "Alice Lum", "Every Sunday at 7.00pm to 9.00pm"));
+		EnrolmentList.add(new Enrolment( "C01"));
 
 		int option = 0;
 		int functionOption = 0;
@@ -107,7 +108,7 @@ public class C206_CaseStudy {
 						functionOption = Helper.readInt("Insert option > ");
 
 						if (functionOption == 1) {
-							addEnrolment(EnrolmentList);
+							addEnrolment(EnrolmentList,"");
 						} else if (functionOption == 2) {
 							deleteEnrolment(EnrolmentList);
 						} else if (functionOption == 3) {
@@ -315,20 +316,16 @@ public class C206_CaseStudy {
 	public static String retrieveAllEnrolment(ArrayList<Enrolment> EnrolmentList) {
 		String output = "";
 		// int enrol_id = 0;
-		for (int i = 1; i < EnrolmentList.size(); i++) {
+		for (int i = 0; i < EnrolmentList.size(); i++) {
 
 //			if (EnrolmentList.get(i).getIsAvailable()) {
-				output += String.format("%-16s %-10s %-10s\n", ("EN"+i),EnrolmentList.get(i).getCourse(),
+				output += String.format("%-16s %-10s %-10s\n", ("EN"+(i+1)),EnrolmentList.get(i).getCourse(),
 						C206_CaseStudy.showAvailability(EnrolmentList.get(i).getIsAvailable())
 						);
 				//enrol_id++;
 
-			if (EnrolmentList.get(i).getIsAvailable()) {
-				output += String.format("%-16s %-10s %-10s\n", ("EN" + i), EnrolmentList.get(i).getCourse(),
-						C206_CaseStudy.showAvailability(EnrolmentList.get(i).getIsAvailable()));
-				// enrol_id++;
-
-			}
+			
+			
 		}
 		return output;
 	}
@@ -391,10 +388,9 @@ public class C206_CaseStudy {
 
 	// ================================= Adding =================================
 
-	public static void addEnrolment(ArrayList<Enrolment> EnrolmentList) {
+	public static void addEnrolment(ArrayList<Enrolment> EnrolmentList ,Enrolment en) {
 		String id = Helper.readString("Enter Course ID: ");
-		Enrolment newEnrol = new Enrolment(id);
-		EnrolmentList.add(newEnrol);
+		EnrolmentList.add(new Enrolment(id));
 		System.out.println("Enrolment added successfully.");
 	}
 
