@@ -13,8 +13,10 @@ public class Enrolment  {
 		return course_id;
 	}
 	public String getid() {
-		for(int i=1; i<999; i++)
-		System.out.println("EN"+i);
+		for(int i=1; i<999; i++) {
+			enrol_id = "EN" + i;
+		}
+
 		return enrol_id;
 	}
 	

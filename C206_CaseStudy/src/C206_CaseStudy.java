@@ -83,11 +83,13 @@ public class C206_CaseStudy {
 				int option3 = Helper.readInt("Enter an option > ");
 
 				if (option3 == 1) {
-
+					C206_CaseStudy.addEnrolment(EnrolmentList);
 				} else if (option3 == 2) {
 					C206_CaseStudy.viewAllEnrolment(EnrolmentList);
 
 				} else if (option3 == 3) {
+					C206_CaseStudy.deleteEnrolment(EnrolmentList);
+
 				}
 
 			} else if (option == 4) {
@@ -133,7 +135,7 @@ public class C206_CaseStudy {
 
 		for (int i = 0; i < EnrolmentList.size(); i++) {
 			if (EnrolmentList.get(i).getIsAvailable()) {
-				output += String.format("%-10s %-30s %-10s\n", EnrolmentList.get(i).getid(),EnrolmentList.get(i).getCourse(),
+				output += String.format("%-16s %-10s %-10s\n", EnrolmentList.get(i).getid(),EnrolmentList.get(i).getCourse(),
 						C206_CaseStudy.showAvailability(EnrolmentList.get(i).getIsAvailable())
 						);
 			}
@@ -143,7 +145,7 @@ public class C206_CaseStudy {
 
 	public static void viewAllEnrolment(ArrayList<Enrolment> EnrolmentList) {
 		C206_CaseStudy.setHeader("ENROLMENT LIST");
-		String output = String.format("%-10s %-30s %-10s\n", "ENROLMENT ID","COURSE ID",
+		String output = String.format("%-15s %10s %-10s\n", "ENROLMENT ID","COURSE ID",
 				"AVAIBILITY");
 		output += retrieveAllEnrolment(EnrolmentList);
 		System.out.println(output);
@@ -193,10 +195,11 @@ public class C206_CaseStudy {
 	
 
 	// ================================= Adding =================================
-	public static void addEnrolment(ArrayList<Enrolment> EnrolmentList, Enrolment en) {
+	public static void addEnrolment(ArrayList<Enrolment> EnrolmentList) {
 		String id = Helper.readString("Enter Course ID: ");
-		
 		Enrolment newEnrol = new Enrolment (id); 
+		EnrolmentList.add(newEnrol);
+		System.out.println("Enrolment added successfully.");
 	}
 
 	
@@ -272,10 +275,10 @@ public class C206_CaseStudy {
 		
 	}
 	public static void deleteEnrolment(ArrayList<Enrolment> EnrolmentList) {
-		String ask_id = Helper.readString("Enter Enrolment ID");
+		String ask_id = Helper.readString("Enter Enrolment ID >");
 		for(Enrolment a : EnrolmentList)
 		{
-			if (ask_id.contains(EnrolmentList.get(0).getid())) {
+			if (ask_id.contains(a.getid())) {
 				EnrolmentList.remove(a);
 				System.out.println("Enrolment deleted successfully.");
 			} else {
