@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class C206_CaseStudy {
-//ycc
+//yc
 //jay
 //hakim
 
@@ -468,11 +468,19 @@ public class C206_CaseStudy {
 		for(Student student:StudentList) {
 			if(student.getNric().equalsIgnoreCase(nrictodelete)) {
 				StudentList.remove(student);
+
 				System.out.println("Student has been successfully deleted");	
+
+				System.out.println("Student has been successfully deleted");
+			}else {
+				System.out.println("Student not found");
+					
+				}
+				
 			}
 		}
 		
-	}
+	
 	
 	public static void deleteEnrolment(ArrayList<Enrolment> EnrolmentList, int index) {
 		if (index >= 0 && index < EnrolmentList.size()) {
