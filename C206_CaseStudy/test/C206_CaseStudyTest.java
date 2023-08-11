@@ -19,6 +19,8 @@ public class C206_CaseStudyTest {
 	private ArrayList<Fee> feeList;
 
 	private ArrayList<Course> courseList;
+	
+	private ArrayList<Student> StudentList;
 
 	public C206_CaseStudyTest() {
 		super();
@@ -97,7 +99,7 @@ public class C206_CaseStudyTest {
 		assertSame("Test that the remaining course is the second course in the list", C02, courseList.get(0));
 
 	}
-	
+	@Test
 	public void testAddEnrolment() {
 		// Item list is not null and it is empty
 		assertNotNull("Test if there is valid Enrolment arraylist to add to", EnrolmentList);
@@ -119,14 +121,9 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.addEnrolment(EnrolmentList, en2);
 		assertEquals("Test that the Enrolment arraylist size is unchange.", 2, EnrolmentList.size());
 
-		// Add an item that has missing detail
-		//Camcorder cc_missing = new Camcorder("CC0014", "", 60);
-		C206_CaseStudy.addCamcorder(EnrolmentList, cc_missing);
-		assertEquals("Test that the Enrolment arraylist size is unchange.", 2, EnrolmentList.size());
 	}
 
 	@Test
-
 	public void testRetrieveAllEnrolment() {
 		//fail("Not yet implemented");
 		// write your code here
@@ -148,17 +145,25 @@ public class C206_CaseStudyTest {
 		testOutput = String.format("%-15s %10s %-10s\n","EN1", "C01","Yes");
 		testOutput += String.format("%-15s %10s %-10s\n","EN2", "C01","Yes");
 		// Test that the details are displayed correctly
+<<<<<<< HEAD
 		assertEquals("Test that the display is correct.", testOutput, allEnrolment);
 
 		assertEquals("Test that nothing is displayed", testOutput, allEnrolment);
 
 
+=======
+		assertEquals("Test that the display is correct.", testOutput, allEnrolment);
+>>>>>>> branch 'master' of https://github.com/22011466-Mikhail/C206_CaseStudy.git
 		//Test Case 3
 		en3.setIsAvailable(false);
 		C206_CaseStudy.addEnrolment(EnrolmentList);
 		assertEquals("Test that Enrolment arraylist size is 2.", 3,  EnrolmentList.size());
 		assertFalse("Test that the last item in the arraylist is not available",  EnrolmentList.get(2).getIsAvailable());
+<<<<<<< HEAD
 	}
+=======
+
+>>>>>>> branch 'master' of https://github.com/22011466-Mikhail/C206_CaseStudy.git
 	@Test
 	public void testRetrieveAllCamcorder() {
 		// Test Case 1
@@ -166,10 +171,14 @@ public class C206_CaseStudyTest {
 		assertNotNull("Test if there is valid Enrolment arraylist to add to", EnrolmentList);
 		assertEquals("Test that the Enrolment arraylist is empty.", 0, EnrolmentList.size());
 
+<<<<<<< HEAD
 		allEnrolment= C206_CaseStudy.retrieveAllEnrolment( EnrolmentList);
 		testOutput = String.format("%-15s %10s %-10s\n","EN3", "C03","Yes");
 		testOutput += String.format("%-15s %10s %-10s\n","EN4", "C04","Yes");
 
+=======
+		// Attempt to retrieve the Enrolment
+>>>>>>> branch 'master' of https://github.com/22011466-Mikhail/C206_CaseStudy.git
 		String allEnrolment = C206_CaseStudy.retrieveAllEnrolment(EnrolmentList);
 		String testOutput = "";
 		// Test if the output is empty
@@ -182,16 +191,15 @@ public class C206_CaseStudyTest {
 		// Attempt to retrieve the Enrolment
 
 		allEnrolment = C206_CaseStudy.retrieveAllEnrolment(EnrolmentList);
-		testOutput = String.format("%-10s %-30s %-10s %-10s %-20d\n", "CC0011", "Nikon HDSLR", "Yes", "", 40);
-		testOutput += String.format("%-10s %-30s %-10s %-10s %-20d\n", "CC0012", "Sony DSC-RX100M7", "Yes", "", 20);
+		testOutput = String.format("%-15s %10s %-10s\n","EN3", "C03","Yes");
+		testOutput += String.format("%-15s %10s %-10s\n","EN4", "C04","Yes");
 
 
 		// Test that the details are displayed correctly
 		assertEquals("Test that the display is correct.", testOutput, allEnrolment);
+
 	}
-
-
-	
+	@Test
 	public void testDeleteEnrolment() {
         // Add enrolment to EnrolmentList
        EnrolmentList.add(new Enrolment("C01"));
@@ -243,8 +251,6 @@ public class C206_CaseStudyTest {
         C206_CaseStudy.deleteFee(feeList, 0);
         assertEquals("Test that feeList size is 0 after deleting", 0, feeList.size());
     }
-    
-    
     @Test
     public void testdeleteStudent() {
     	//Add student to StudentList 
