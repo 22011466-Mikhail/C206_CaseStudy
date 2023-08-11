@@ -468,6 +468,10 @@ public class C206_CaseStudy {
 			if(student.getNric().equalsIgnoreCase(nrictodelete)) {
 				StudentList.remove(student);
 				System.out.println("Student has been successfully deleted");
+			}else {
+				System.out.println("Student not found");
+					
+				}
 				
 			}
 		}
