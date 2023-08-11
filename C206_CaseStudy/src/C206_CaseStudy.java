@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class C206_CaseStudy {
 //yc
-//jay
+//jayy
 //hakim
 
 	public static void main(String[] args) {
