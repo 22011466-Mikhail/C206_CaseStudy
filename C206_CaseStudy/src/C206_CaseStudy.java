@@ -422,6 +422,24 @@ public class C206_CaseStudy {
 	}
 
 	public static void addCourse(ArrayList<Course> courseList, Course course) {
+		String courseCode = course.getCourseCode();
+	    String title = course.getTitle();
+
+	    // Check for duplicate course code
+	    for (Course existingCourse : courseList) {
+	        if (existingCourse.getCourseCode().equalsIgnoreCase(courseCode)) {
+	            System.out.println("Error: Duplicate course code. Course cannot be added.");
+	            return;
+	        }
+	    }
+
+	    // Check for duplicate title
+	    for (Course existingCourse : courseList) {
+	        if (existingCourse.getTitle().equalsIgnoreCase(title)) {
+	            System.out.println("Error: Duplicate course title. Course cannot be added.");
+	            return;
+	        }
+	    }
 	    if (course.getCourseCode().isEmpty() || course.getTitle().isEmpty() || course.getInstructor().isEmpty() || course.getSchedule().isEmpty()) {
 	        System.out.println("Error: Missing details. Course cannot be added.");
 	    } else {
