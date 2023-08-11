@@ -83,17 +83,17 @@ public class C206_CaseStudyTest {
 		assertNotNull("Test if there is valid Enrolment arraylist to add to", EnrolmentList);
 		assertEquals("Test that the Enrolment arraylist is empty.", 0, EnrolmentList.size());
 		// Given an empty list, after adding 1 item, the size of the list is 1
-		C206_CaseStudy.addEnrolment(EnrolmentList, en1);
+		C206_CaseStudy.addEnrolment(EnrolmentList);
 		assertEquals("Test that the Enrolment arraylist size is 1.", 1, EnrolmentList.size());
 
 		// Add an item
-		C206_CaseStudy.addEnrolment(EnrolmentList, en2);
+		C206_CaseStudy.addEnrolment(EnrolmentList);
 		assertEquals("Test that the Enrolment arraylist size is now 2.", 2, EnrolmentList.size());
 		// The item just added is as same as the last item in the list
 		assertSame("Test that Enrolment is added to the end of the list.", en2, EnrolmentList.get(1));
 
 		// Add an item that already exists in the list
-		C206_CaseStudy.addEnrolment(EnrolmentList, en2);
+		C206_CaseStudy.addEnrolment(EnrolmentList);
 		assertEquals("Test that the Enrolment arraylist size is unchange.", 2, EnrolmentList.size());
 
 	}
