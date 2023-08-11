@@ -70,7 +70,7 @@ public class C206_CaseStudy {
 					}
 
 				} else if (option == 2) { // ----STUDENT FUNCTION-----
-					while (functionOption != 6) {
+					while (functionOption != 4) {
 						studentMenu();
 						functionOption = Helper.readInt("Insert option > ");
 
@@ -98,10 +98,6 @@ public class C206_CaseStudy {
 							int feeIndexToDelete = Helper.readInt("Enter the index of the fee to delete: ");
 							C206_CaseStudy.deleteFee(feeList, feeIndexToDelete);
 						} else if (functionOption == 3) {
-							viewAllFees(feeList);
-							int feeIndexToUpdate = Helper.readInt("Enter the index of the fee to update: ");
-							updateFee(feeList, feeIndexToUpdate);
-						} else if (functionOption == 4) {
 							viewAllFees(feeList);
 						}
 					}
@@ -213,10 +209,8 @@ public class C206_CaseStudy {
 		setHeader("FEE MENU");
 		System.out.println("1. Add Fee");
 		System.out.println("2. Remove Fee");
-		System.out.println("3. Update Fee");
-		System.out.println("4. View Fee");
-		System.out.println("5. Search Fee");
-		System.out.println("6. Quit");
+		System.out.println("3. View Fee");
+		System.out.println("4. Quit");
 		Helper.line(80, "-");
 	}
 
@@ -526,35 +520,4 @@ public class C206_CaseStudy {
 		}
 	}
 
-	// ================================= Editing =================================
-	public static void updateFee(ArrayList<Fee> feeList, int feeIndex) {
-		if (feeIndex >= 0 && feeIndex < feeList.size()) {
-			Fee feeToUpdate = feeList.get(feeIndex);
-
-			String newFeeType = Helper.readString("Enter new Fee Type (Tuition Fee/Exam Fee): ");
-			double newAmount = Helper.readDouble("Enter new Amount: ");
-			String newDueDate = Helper.readString("Enter new Due Date (YYYY-mm-dd): ");
-
-			feeToUpdate.setFeeType(newFeeType);
-			feeToUpdate.setAmount(newAmount);
-			feeToUpdate.setDueDate(newDueDate);
-
-			System.out.println("Fee details updated successfully.");
-		} else {
-			System.out.println("Invalid fee index.");
-		}
-	}
-
-	// ================================= Searching =================================
-	public static Fee searchFee(ArrayList<Fee> feeList, String searchKeyword) {
-		for (Fee fee : feeList) {
-			if (fee.getFeeType().equalsIgnoreCase(searchKeyword)) {
-				return fee;
-			}
-		}
-		
-		return null; // returns null if fee not found
-	}
-	
-	
 }
