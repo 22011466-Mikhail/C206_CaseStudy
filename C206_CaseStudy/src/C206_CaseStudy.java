@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class C206_CaseStudy {
-//yc
+//ycc
 //jay
 //hakim
 //Norhilman
@@ -316,20 +316,20 @@ public class C206_CaseStudy {
 		String output = "";
 		// int enrol_id = 0;
 		for (int i = 1; i < EnrolmentList.size(); i++) {
-<<<<<<< HEAD
+
 //			if (EnrolmentList.get(i).getIsAvailable()) {
 				output += String.format("%-16s %-10s %-10s\n", ("EN"+i),EnrolmentList.get(i).getCourse(),
 						C206_CaseStudy.showAvailability(EnrolmentList.get(i).getIsAvailable())
 						);
 				//enrol_id++;
-=======
+
 			if (EnrolmentList.get(i).getIsAvailable()) {
 				output += String.format("%-16s %-10s %-10s\n", ("EN" + i), EnrolmentList.get(i).getCourse(),
 						C206_CaseStudy.showAvailability(EnrolmentList.get(i).getIsAvailable()));
 				// enrol_id++;
->>>>>>> branch 'master' of https://github.com/22011466-Mikhail/C206_CaseStudy.git
+
 			}
-//		}
+		}
 		return output;
 	}
 
@@ -374,19 +374,10 @@ public class C206_CaseStudy {
 		}
 	}
 
-<<<<<<< HEAD
 	// ================================= Adding =================================
-//	public static void addEnrolment(ArrayList<Enrolment> EnrolmentList, Enrolment en) {
-//		String id = Helper.readString("Enter Course ID: ");
-//		Enrolment newEnrol = new Enrolment (id); 
-//		EnrolmentList.add(newEnrol);
-//		System.out.println("Enrolment added successfully.");
-//	}
 
-	public static void addEnrolment(ArrayList<Enrolment> EnrolmentList) {
-		String id = Helper.readString("Enter Course ID: "); 
-		EnrolmentList.add(new Enrolment(id));
-=======
+
+	
 	public static void viewStudentList(ArrayList<Student> StudentList) {
 		System.out.println("Student List");
 		String format = "%-15s %-15s %-10s %-30s %-15s\n";
@@ -399,16 +390,6 @@ public class C206_CaseStudy {
 	}
 
 	// ================================= Adding =================================
-	public static void addEnrolment(ArrayList<Enrolment> EnrolmentList, Enrolment en) {
-		String id = Helper.readString("Enter Course ID: ");
-		Enrolment newEnrol = new Enrolment(id);
-		EnrolmentList.add(newEnrol);
->>>>>>> branch 'master' of https://github.com/22011466-Mikhail/C206_CaseStudy.git
-		System.out.println("Enrolment added successfully.");
-<<<<<<< HEAD
-	}
-=======
-	}
 
 	public static void addEnrolment(ArrayList<Enrolment> EnrolmentList) {
 		String id = Helper.readString("Enter Course ID: ");
@@ -416,7 +397,7 @@ public class C206_CaseStudy {
 		EnrolmentList.add(newEnrol);
 		System.out.println("Enrolment added successfully.");
 	}
->>>>>>> branch 'master' of https://github.com/22011466-Mikhail/C206_CaseStudy.git
+
 
 	public static void addFee(ArrayList<Fee> feeList, String feeType, double amount, String dueDate) {
 		Fee newFee = new Fee(feeType, amount, dueDate);
@@ -519,21 +500,9 @@ public class C206_CaseStudy {
 			}
 
 		}
-<<<<<<< HEAD
 
-=======
 	}
 
-	public static void deleteEnrolment(ArrayList<Enrolment> EnrolmentList, int index) {
-		if (index >= 0 && index < EnrolmentList.size()) {
-			EnrolmentList.remove(index);
-			System.out.println("Enrolment deleted successfully.");
-		} else {
-			System.out.println("Invalid Enrolment ID.");
-		}
-	}
-
->>>>>>> branch 'master' of https://github.com/22011466-Mikhail/C206_CaseStudy.git
 	public static void deleteEnrolment(ArrayList<Enrolment> EnrolmentList) {
 		String ask_id = Helper.readString("Enter Course ID >");
 		boolean found = false;
