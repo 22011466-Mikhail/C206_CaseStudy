@@ -89,10 +89,8 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.addEnrolment(EnrolmentList, en2);
 		assertEquals("Test that the Enrolment arraylist size is unchange.", 2, EnrolmentList.size());
 
-		// Add an item that has missing detail
-		Camcorder cc_missing = new Camcorder("CC0014", "", 60);
-		C206_CaseStudy.addCamcorder(EnrolmentList, cc_missing);
-		assertEquals("Test that the Enrolment arraylist size is unchange.", 2, EnrolmentList.size());
+	
+		
 	}
 	@Test
     public void testAddFee() {

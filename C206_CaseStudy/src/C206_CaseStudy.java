@@ -14,7 +14,7 @@ public class C206_CaseStudy {
 		StudentList.add(new Student("Adam Salah","2003-08-25","M7654","Mathematics",83435469));
 
 		feeList.add(new Fee("Tuition Fee", 1000.0, "2023-09-01"));
-
+		EnrolmentList.add(new Enrolment("C01") );
 		courseList.add(new Course("C01", "Mathematics", "Adam Salah", "Every Saturday at 5.00pm to 7.00pm"));
 		courseList.add(new Course("C02", "English", "Alice Lum", "Every Sunday at 7.00pm to 9.00pm"));
 
@@ -133,10 +133,9 @@ public class C206_CaseStudy {
 
 		for (int i = 0; i < EnrolmentList.size(); i++) {
 			if (EnrolmentList.get(i).getIsAvailable()) {
-				output += String.format("%-10s %-30s %-10s %-10s %-20d\n", EnrolmentList.get(i).getid(),
-						EnrolmentList.get(i).getDescription(),
-						C206_CaseStudy.showAvailability(EnrolmentList.get(i).getIsAvailable()),
-						EnrolmentList.get(i).getDate(), EnrolmentList.get(i).getOpticalZoom());
+				output += String.format("%-10s %-30s %-10s\n", EnrolmentList.get(i).getid(),EnrolmentList.get(i).getCourse(),
+						C206_CaseStudy.showAvailability(EnrolmentList.get(i).getIsAvailable())
+						);
 			}
 		}
 		return output;
@@ -144,8 +143,8 @@ public class C206_CaseStudy {
 
 	public static void viewAllEnrolment(ArrayList<Enrolment> EnrolmentList) {
 		C206_CaseStudy.setHeader("ENROLMENT LIST");
-		String output = String.format("%-10s %-30s %-10s %-10s %-20s\n", "ASSET TAG", "DESCRIPTION", "AVAILABLE",
-				"DUE DATE", "OPTICAL ZOOM");
+		String output = String.format("%-10s %-30s %-10s\n", "ENROLMENT ID","COURSE ID",
+				"AVAIBILITY");
 		output += retrieveAllEnrolment(EnrolmentList);
 		System.out.println(output);
 	}
@@ -195,18 +194,12 @@ public class C206_CaseStudy {
 
 	// ================================= Adding =================================
 	public static void addEnrolment(ArrayList<Enrolment> EnrolmentList, Enrolment en) {
-
-		EnrolmentList.add(en);
+		String id = Helper.readString("Enter Course ID: ");
+		
+		Enrolment newEnrol = new Enrolment (id); 
 	}
 
-	public static void deleteEnrolment(ArrayList<Enrolment> EnrolmentList, int index) {
-		if (index >= 0 && index < EnrolmentList.size()) {
-			EnrolmentList.remove(index);
-			System.out.println("Enrolment deleted successfully.");
-		} else {
-			System.out.println("Invalid Enrolment ID.");
-		}
-	}
+	
 
 	public static void addFee(ArrayList<Fee> feeList, String feeType, double amount, String dueDate) {
 		Fee newFee = new Fee(feeType, amount, dueDate);
@@ -274,6 +267,19 @@ public class C206_CaseStudy {
 				StudentList.remove(student);
 				System.out.println("Student has been successfully deleted");
 				
+			}
+		}
+		
+	}
+	public static void deleteEnrolment(ArrayList<Enrolment> EnrolmentList) {
+		String ask_id = Helper.readString("Enter Enrolment ID");
+		for(Enrolment a : EnrolmentList)
+		{
+			if (ask_id.contains(EnrolmentList.get(0).getid())) {
+				EnrolmentList.remove(a);
+				System.out.println("Enrolment deleted successfully.");
+			} else {
+				System.out.println("Invalid Enrolment ID.");
 			}
 		}
 		

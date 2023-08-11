@@ -1,28 +1,23 @@
 
 public class Enrolment  {
 	private String enrol_id ;
-	private String description;
-	private String date;
+	private String course_id;
 	public boolean isAvailable;
 	
-	public Enrolment(String enrol_id , String description, String date) {
-		this.enrol_id = enrol_id;
-		this.description = description;
-		this.date = date;
+	public Enrolment(String course_id) {
+		this.course_id = course_id;
 		this.isAvailable=true;
 	}
 	
+	public String getCourse() {
+		return course_id;
+	}
 	public String getid() {
+		for(int i=1; i<999; i++)
+		System.out.println("EN"+i);
 		return enrol_id;
 	}
 	
-	public String getDescription() {
-		return description;
-	}
-	
-	public String getDate() {
-		return date;
-	}
 	public boolean getIsAvailable(){
 		return isAvailable;
 	}
