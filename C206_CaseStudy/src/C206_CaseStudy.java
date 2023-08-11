@@ -132,7 +132,7 @@ public class C206_CaseStudy {
 				}
 			}
 		}
-		
+	}
 	/*
 	public static void menu() {
 		System.out.println("TUITION CENTRE APP");
@@ -255,7 +255,7 @@ public class C206_CaseStudy {
 		String output = "";
 		for (int i = 0; i < userList.size(); i++) {
 
-<<<<<<< HEAD
+
 			output += String.format("%-20s %-20s %-20s\n", 
 					userList.get(i).getUsername(),
 					userList.get(i).getPassword(),
@@ -320,10 +320,8 @@ public class C206_CaseStudy {
 		}
 	}
 
-=======
->>>>>>> branch 'master' of https://github.com/22011466-Mikhail/C206_CaseStudy.git
-	// ================================= View items
-	// =================================
+
+	// ================================= View items =================================
 	public static String retrieveAllEnrolment(ArrayList<Enrolment> EnrolmentList) {
 		String output = "";
 
@@ -389,13 +387,13 @@ public class C206_CaseStudy {
 	
 
 	// ================================= Adding =================================
-<<<<<<< HEAD
 	public static void addEnrolment(ArrayList<Enrolment> EnrolmentList, Enrolment en) {
-
-		EnrolmentList.add(en);
+		String id = Helper.readString("Enter Course ID: ");
+		Enrolment newEnrol = new Enrolment (id); 
+		EnrolmentList.add(newEnrol);
+		System.out.println("Enrolment added successfully.");
 	}
 
-=======
 	public static void addEnrolment(ArrayList<Enrolment> EnrolmentList) {
 		String id = Helper.readString("Enter Course ID: ");
 		Enrolment newEnrol = new Enrolment (id); 
@@ -404,7 +402,6 @@ public class C206_CaseStudy {
 	}
 
 	
->>>>>>> branch 'master' of https://github.com/22011466-Mikhail/C206_CaseStudy.git
 
 	public static void addFee(ArrayList<Fee> feeList, String feeType, double amount, String dueDate) {
 		Fee newFee = new Fee(feeType, amount, dueDate);
@@ -476,7 +473,6 @@ public class C206_CaseStudy {
 		}
 		
 	}
-<<<<<<< HEAD
 	
 	public static void deleteEnrolment(ArrayList<Enrolment> EnrolmentList, int index) {
 		if (index >= 0 && index < EnrolmentList.size()) {
@@ -485,7 +481,8 @@ public class C206_CaseStudy {
 		} else {
 			System.out.println("Invalid Enrolment ID.");
 		}
-=======
+	}
+
 	public static void deleteEnrolment(ArrayList<Enrolment> EnrolmentList) {
 		String ask_id = Helper.readString("Enter Enrolment ID >");
 		for(Enrolment a : EnrolmentList)
@@ -497,8 +494,7 @@ public class C206_CaseStudy {
 				System.out.println("Invalid Enrolment ID.");
 			}
 		}
-		
->>>>>>> branch 'master' of https://github.com/22011466-Mikhail/C206_CaseStudy.git
+
 	}
 
 }
