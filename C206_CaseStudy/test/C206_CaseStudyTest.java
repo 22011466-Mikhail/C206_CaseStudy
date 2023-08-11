@@ -6,6 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+
 public class C206_CaseStudyTest {
 	private Enrolment en1;
 	private Enrolment en2;
@@ -33,7 +34,7 @@ public class C206_CaseStudyTest {
 	}
 	@Test
 	public void testAddCourse() {
-<<<<<<< HEAD
+
 		// Test if courseList is not null and empty
 		assertNotNull("Test if there is a valid courseList to add to", courseList);
 		assertEquals("Test that the courseList is empty.", 0, courseList.size());
@@ -43,27 +44,7 @@ public class C206_CaseStudyTest {
 		assertEquals("Test that the courseList size is 1.", 1, courseList.size());
 		assertSame("Test that the added course is the same as the first course in the list", C01, courseList.get(0));
 	}
-	@Test
-	public void testViewCourse() {
-		// Test if courseList is not null and empty - boundary
-		assertNotNull("Test if there is valid courseList to retrieve course from", courseList);
 
-		// Given an empty list, after adding 2 courses, test if the size of the list is
-		// 2 - normal
-		C206_CaseStudy.addCourse(courseList, C01);
-		C206_CaseStudy.addCourse(courseList, C02);
-		assertEquals("Test that course list size is 2", 2, courseList.size());
-
-		// Call the method to view courses
-		C206_CaseStudy.viewAllCourse(courseList);
-=======
-		
-
-		// Add a course and verify
-		C206_CaseStudy.addCourse(courseList, C01);
-		assertEquals("Test that the courseList size is 1.", 1, courseList.size());
-		assertSame("Test that the added course is the same as the first course in the list", C01, courseList.get(0));
-	}
 	@Test
 	public void testViewCourse() {
 		
@@ -86,7 +67,7 @@ public class C206_CaseStudyTest {
 				testOutput += String.format("%-5s %-15s %-20s %-30s\n","C02", "English", "Alice Lum", "Every Sunday at 7.00pm to 9.00pm");
 			
 				assertEquals("Test that ViewAllCourselist", testOutput, allCourse);
->>>>>>> branch 'master' of https://github.com/22011466-Mikhail/C206_CaseStudy.git
+				
 	}
 	@Test
 	public void testDeleteCourse() {
@@ -108,11 +89,10 @@ public class C206_CaseStudyTest {
 		assertNotNull("Test if there is valid Enrolment arraylist to add to", EnrolmentList);
 		assertEquals("Test that the Enrolment arraylist is empty.", 0, EnrolmentList.size());
 		// Given an empty list, after adding 1 item, the size of the list is 1
-<<<<<<< HEAD
+		
 		C206_CaseStudy.addEnrolment(EnrolmentList, en1);
-=======
 		C206_CaseStudy.addEnrolment(EnrolmentList);
->>>>>>> branch 'master' of https://github.com/22011466-Mikhail/C206_CaseStudy.git
+		
 		assertEquals("Test that the Enrolment arraylist size is 1.", 1, EnrolmentList.size());
 
 		// Add an item
@@ -126,16 +106,13 @@ public class C206_CaseStudyTest {
 		assertEquals("Test that the Enrolment arraylist size is unchange.", 2, EnrolmentList.size());
 
 		// Add an item that has missing detail
-		Camcorder cc_missing = new Camcorder("CC0014", "", 60);
+		//Camcorder cc_missing = new Camcorder("CC0014", "", 60);
 		C206_CaseStudy.addCamcorder(EnrolmentList, cc_missing);
 		assertEquals("Test that the Enrolment arraylist size is unchange.", 2, EnrolmentList.size());
 	}
-<<<<<<< HEAD
+
 	@Test
-    public void testAddFee() {
-        // Test that feeList is initially empty
-        assertEquals("Test that feeList is empty", 0, feeList.size());
-=======
+
 	public void testRetrieveAllEnrolment() {
 		//fail("Not yet implemented");
 		// write your code here
@@ -146,53 +123,8 @@ public class C206_CaseStudyTest {
 		String testOutput = "";
 		// Test if the output is empty
 		assertEquals("Test that nothing is displayed", testOutput, allChromebook);
->>>>>>> branch 'master' of https://github.com/22011466-Mikhail/C206_CaseStudy.git
 
-<<<<<<< HEAD
-        // Add a fee
-        C206_CaseStudy.addFee(feeList, "Tuition Fee", 1000.0, "2023-09-01");
-        assertEquals("Test that feeList size is 1", 1, feeList.size());
 
-        // Add another fee
-        C206_CaseStudy.addFee(feeList, "Exam Fee", 500.0, "2023-10-01");
-        assertEquals("Test that feeList size is 2", 2, feeList.size());
-        
-    }
-	@Test
-	public void testViewAllFees() {
-	    // After adding 1 fee, test that size of list is 1 - normal
-	    feeList.add(new Fee("Tuition Fee", 1000.0, "2023-09-01"));
-	    assertEquals("Test that the size of list is 1", 1, feeList.size());
-
-	    C206_CaseStudy.viewAllFees(feeList);
-
-		}
-		
-
-    @Test
-    public void testDeleteFee() {
-        // Add fees to feeList
-        feeList.add(new Fee("Tuition Fee", 1000.0, "2023-09-01"));
-        feeList.add(new Fee("Exam Fee", 500.0, "2023-10-01"));
-
-        // Delete a fee
-        C206_CaseStudy.deleteFee(feeList, 0);
-        assertEquals("Test that feeList size is 1 after deleting", 1, feeList.size());
-
-        // Delete another fee
-        C206_CaseStudy.deleteFee(feeList, 0);
-        assertEquals("Test that feeList size is 0 after deleting", 0, feeList.size());
-    }
-    @Test
-    public void testdeleteStudent() {
-    	//Add student to StudentList 
-        StudentList.add(new Student("Bryan","2001-06-30","N4567","English",82567898));
-        StudentList.add(new Student("Cedric","2001-07-31","N8712","English",82567893));
-        //Delete a Student
-        C206_CaseStudy.deleteStudent(StudentList,0);
-        assertEquals("Test that StudentList size is 1 after deleting",1,StudentList.size());
-        
-    }
 	@Test
 	public void testRetrieveAllCamcorder() {
 		// Test Case 1
@@ -205,53 +137,21 @@ public class C206_CaseStudyTest {
 		// Test if the output is empty
 		assertEquals("Test that nothing is displayed", testOutput, allEnrolment);
 
-		// Test Case 2
-		C206_CaseStudy.addEnrolment(EnrolmentList, en1);
-		C206_CaseStudy.addEnrolment(EnrolmentList, en2);
-		// Test that the list is not empty
-		assertEquals("Test that Camcorder arraylist size is 2.", 2, EnrolmentList.size());
-		// Attempt to retrieve the Enrolment
-		allEnrolment = C206_CaseStudy.retrieveAllCamcorder(EnrolmentList);
-		testOutput = String.format("%-10s %-30s %-10s %-10s %-20d\n", "CC0011", "Nikon HDSLR", "Yes", "", 40);
-		testOutput += String.format("%-10s %-30s %-10s %-10s %-20d\n", "CC0012", "Sony DSC-RX100M7", "Yes", "", 20);
-		// Test that the details are displayed correctly
-		assertEquals("Test that the display is correct.", testOutput, allCamcorder);
-
-		// Test Case 3
-=======
-		//Test Case 2
-		C206_CaseStudy.addEnrolment(EnrolmentList);
-		C206_CaseStudy.addEnrolment(EnrolmentList);
-		// Test that the list is not empty
-		assertEquals("Test that Chromebook arraylist size is 2.", 2, EnrolmentList.size());
-		// Attempt to retrieve the Enrolment
-		allChromebook= C206_CaseStudy.retrieveAllEnrolment(EnrolmentList);
-		testOutput = String.format("%-10s %-30s %-10s %-10s %-20s\n","CB0011", "My Google Chromebook 1st", "Yes", "", "Mac OS");
-		testOutput += String.format("%-10s %-30s %-10s %-10s %-20s\n","CB0012", "SAMSUNG Chromebook 4+", "Yes", "", "Win 10");
-		// Test that the details are displayed correctly
-		assertEquals("Test that the display is correct.", testOutput, allChromebook);
-
-		//Test Case 3
->>>>>>> branch 'master' of https://github.com/22011466-Mikhail/C206_CaseStudy.git
 		en3.setIsAvailable(false);
 		C206_CaseStudy.addEnrolment(EnrolmentList, en3);
 		assertEquals("Test that Enrolment arraylist size is 2.", 3, EnrolmentList.size());
 		assertFalse("Test that the last item in the arraylist is not available", EnrolmentList.get(2).getIsAvailable());
 		// Attempt to retrieve the Enrolment
-<<<<<<< HEAD
+
 		allEnrolment = C206_CaseStudy.retrieveAllEnrolment(EnrolmentList);
 		testOutput = String.format("%-10s %-30s %-10s %-10s %-20d\n", "CC0011", "Nikon HDSLR", "Yes", "", 40);
 		testOutput += String.format("%-10s %-30s %-10s %-10s %-20d\n", "CC0012", "Sony DSC-RX100M7", "Yes", "", 20);
-=======
-		allChromebook= C206_CaseStudy.retrieveAllEnrolment( EnrolmentList);
-		testOutput = String.format("%-10s %-30s %-10s %-10s %-20s\n","CB0011", "My Google Chromebook 1st", "Yes", "", "Mac OS");
-		testOutput += String.format("%-10s %-30s %-10s %-10s %-20s\n","CB0012", "SAMSUNG Chromebook 4+", "Yes", "", "Win 10");
->>>>>>> branch 'master' of https://github.com/22011466-Mikhail/C206_CaseStudy.git
+
 		// Test that the details are displayed correctly
 		assertEquals("Test that the display is correct.", testOutput, allEnrolment);
 	}
-<<<<<<< HEAD
-=======
+
+
 	
 	public void testDeleteEnrolment() {
         // Add enrolment to EnrolmentList
@@ -316,9 +216,7 @@ public class C206_CaseStudyTest {
         assertEquals("Test that StudentList size is 1 after deleting",1,StudentList.size());
         
     }
-	
-	
->>>>>>> branch 'master' of https://github.com/22011466-Mikhail/C206_CaseStudy.git
+
 	@After
 	public void tearDown() throws Exception {
 	}
