@@ -4,6 +4,7 @@ public class C206_CaseStudy {
 //yc
 //jay
 //hakim
+//Norhilman
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -421,8 +422,15 @@ public class C206_CaseStudy {
 	}
 
 	public static void addCourse(ArrayList<Course> courseList, Course course) {
-		courseList.add(course);
+	    if (course.getCourseCode().isEmpty() || course.getTitle().isEmpty() || course.getInstructor().isEmpty() || course.getSchedule().isEmpty()) {
+	        System.out.println("Error: Missing details. Course cannot be added.");
+	    } else {
+	    	
+	        courseList.add(course);
+	        System.out.println("Course added successfully.");
+	   }
 	}
+
 	public static void addStudent(ArrayList<Student> StudentList) {
 		String name=Helper.readString("enter your name: ");
 		String dob=Helper.readString("Enter your date of birth: ");
