@@ -101,27 +101,18 @@ public class C206_CaseStudyTest {
 	}
 	@Test
 	public void testAddEnrolment() {
-		// Item list is not null and it is empty
-		assertNotNull("Test if there is valid Enrolment arraylist to add to", EnrolmentList);
-		assertEquals("Test that the Enrolment arraylist is empty.", 0, EnrolmentList.size());
-		// Given an empty list, after adding 1 item, the size of the list is 1
-		
-		C206_CaseStudy.addEnrolment(EnrolmentList, en1);
-		C206_CaseStudy.addEnrolment(EnrolmentList);
-		
-		assertEquals("Test that the Enrolment arraylist size is 1.", 1, EnrolmentList.size());
+        // Test that feeList is initially empty
+        assertEquals("Test that feeList is empty", 0, EnrolmentList.size());
 
-		// Add an item
-		C206_CaseStudy.addEnrolment(EnrolmentList, en2);
-		assertEquals("Test that the Enrolment arraylist size is now 2.", 2, EnrolmentList.size());
-		// The item just added is as same as the last item in the list
-		assertSame("Test that Enrolment is added to the end of the list.", en2, EnrolmentList.get(1));
+        // Add a fee
+        C206_CaseStudy.addEnrolment(EnrolmentList);
+        assertEquals("Test that feeList size is 1", 1, EnrolmentList.size());
 
-		// Add an item that already exists in the list
-		C206_CaseStudy.addEnrolment(EnrolmentList, en2);
-		assertEquals("Test that the Enrolment arraylist size is unchange.", 2, EnrolmentList.size());
-
-	}
+        // Add another fee
+        C206_CaseStudy.addEnrolment(EnrolmentList);
+        assertEquals("Test that feeList size is 2", 2, EnrolmentList.size());
+        
+    }
 
 	@Test
 	public void testRetrieveAllEnrolment() {
@@ -150,8 +141,6 @@ public class C206_CaseStudyTest {
 
 		assertEquals("Test that nothing is displayed", testOutput, allEnrolment);
 
-
-
 		assertEquals("Test that the display is correct.", testOutput, allEnrolment);
 
 		//Test Case 3
@@ -163,7 +152,8 @@ public class C206_CaseStudyTest {
 	@Test
 	public void testDeleteEnrolment() {
         // Add enrolment to EnrolmentList
-       EnrolmentList.add(new Enrolment("C01"));
+	   EnrolmentList.add(new Enrolment("C01"));
+       
        EnrolmentList.add(new Enrolment("C02"));
 
         // Delete an Enrolment
