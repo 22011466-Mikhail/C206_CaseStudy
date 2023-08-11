@@ -1,43 +1,32 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class C206_CaseStudy {
+//yc
+//jay
+//hakim
 
-
-//branch 'master' of https://github.com/22011466-Mikhail/C206_CaseStudy.git
-	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
-		//Creation of arraylists for main
-		ArrayList<Fee> feeList = new ArrayList<>();
 		ArrayList<User> userList = new ArrayList<User>();
-		ArrayList<Enrolment> enrolmentList = new ArrayList<Enrolment>();
-		ArrayList<Student> studentList = new ArrayList<Student>();
+		ArrayList<Fee> feeList = new ArrayList<Fee>();
 		ArrayList<Course> courseList = new ArrayList<Course>();
+		ArrayList<Enrolment> EnrolmentList = new ArrayList<Enrolment>();
+		ArrayList<Student> StudentList = new ArrayList<Student>();
+		StudentList.add(new Student("Adam Salah","2003-08-25","M7654","Mathematics",83435469));
+
+		feeList.add(new Fee("Tuition Fee", 1000.0, "2023-09-01"));
 		
 		//addition of sample objects to arraylists
 		userList.add(new User("user1", "password1", "student"));
 		userList.add(new User("user2", "password2", "teacher"));
 		userList.add(new User("user3", "password3", "admin"));
 		
-		courseList.add(new Course(1, "Networking Course", "6 months", 2.0));
-		courseList.add(new Course(2, "Cooking Course", "2 months", 1.0));
-		courseList.add(new Course(3, "Math Course", "4 months", 3.0));
-		
-		Fee df = new Fee("Default Fee", 1000.0, "01/01/2024");
-		Fee tf = new Fee("Tuition Fee", 2000.0, "01/02/2024");
-		Fee bf = new Fee("Book Fee", 30.0, "01/03/2024");
-		
-		Enrolment = new Enrolment("1" , "Enrolment", String date)
-		
-		feeList.add(df);
-		feeList.add(bf);
-		feeList.add(tf);
-		
-		studentList.add(new Student("1", "John", 14, new ArrayList<Fee>(Arrays.asList(df,bf))));
-		studentList.add(new Student("2", "Joe", 16, new ArrayList<Fee>(Arrays.asList(df,bf,tf))));
-		studentList.add(new Student("3", "James", 18, new ArrayList<Fee>(Arrays.asList(tf))));
+		StudentList.add(new Student("Adam Salah","2003-08-25","M7654","Mathematics",83435469));
+
+		courseList.add(new Course("C01", "Mathematics", "Adam Salah", "Every Saturday at 5.00pm to 7.00pm"));
+		courseList.add(new Course("C02", "English", "Alice Lum", "Every Sunday at 7.00pm to 9.00pm"));
+
+
 		
 		int option = 0;
 		int functionOption = 0;
@@ -54,14 +43,15 @@ public class C206_CaseStudy {
 				if(loginUser != null) {
 					System.out.println("Login successful");
 					System.out.println("User: " + loginUser.getUsername());
+					System.out.println("Role: " + loginUser.getRole());
 					break;
 				} else {
 					System.out.println("Username / password is wrong");
 				}
  			}
 		}
-		
-		if(loginUser != null) {
+
+		if (loginUser != null) {
 			while(option != 6) {
 				menu();
 				option = Helper.readInt("Insert menu option > ");
@@ -71,11 +61,11 @@ public class C206_CaseStudy {
 						functionOption = Helper.readInt("Insert option > ");
 						
 						if(functionOption == 1) {
-							addUser(userList, inputUser());
+							addCourse(courseList, inputCourse());
 						} else if(functionOption == 2) {
-							removeUser(userList);
+							deleteCourse(courseList);
 						} else if(functionOption == 3) {
-							viewUser(userList);
+							viewAllCourse(courseList);
 						}
 						
 					}
@@ -86,11 +76,11 @@ public class C206_CaseStudy {
 						functionOption = Helper.readInt("Insert option > ");
 						
 						if(functionOption == 1) {
-							addUser(userList, inputUser());
+							addStudent(StudentList);
 						} else if(functionOption == 2) {
-							removeUser(userList);
+							deleteStudent(StudentList);
 						} else if(functionOption == 3) {
-							viewUser(userList);
+							viewStudentList(StudentList);
 						}
 					}
 
@@ -100,11 +90,16 @@ public class C206_CaseStudy {
 						functionOption = Helper.readInt("Insert option > ");
 						
 						if(functionOption == 1) {
-							addUser(userList, inputUser());
+							String feeType = Helper.readString("Enter Fee Type (Tuition Fee/Exam Fee): ");
+							double amount = Helper.readDouble("Enter Amount: ");
+							String dueDate = Helper.readString("Enter Due Date(YYYY-mm-dd): ");
+
+							C206_CaseStudy.addFee(feeList, feeType, amount, dueDate);
 						} else if(functionOption == 2) {
-							removeUser(userList);
+							int feeIndexToDelete = Helper.readInt("Enter the index of the fee to delete: ");
+							C206_CaseStudy.deleteFee(feeList, feeIndexToDelete);
 						} else if(functionOption == 3) {
-							viewUser(userList);
+							viewAllFees(feeList);
 						}
 					}
 				} else if(option == 4) { // ----ENROLMENT FUNCTION-----
@@ -113,16 +108,16 @@ public class C206_CaseStudy {
 						functionOption = Helper.readInt("Insert option > ");
 						
 						if(functionOption == 1) {
-							addEnrolment(enrolmentList, inputUser());
+							//addEnrolment(enrolmentList, inputUser());
 						} else if(functionOption == 2) {
-							removeUser(userList);
+							//deleteEnrolment(EnrolmentList);
 						} else if(functionOption == 3) {
-							viewUser(userList);
+							//viewEnrolment(EnrolmentList);
 						}
 					}
 				}  else if(option == 5) { // ----USER FUNCTION-----
 					while(functionOption != 4) {
-						studentMenu();
+						userMenu();
 						functionOption = Helper.readInt("Insert option > ");
 						
 						if(functionOption == 1) {
@@ -138,14 +133,21 @@ public class C206_CaseStudy {
 		}
 		
 		
-		System.out.println("Exiting the program...");
-		
-	    //addFee(feeList, "Tuition Fee", 1000.0, "2023-09-01");
-	    
-	
+	}
+
+	/*
+	public static void menu() {
+		System.out.println("TUITION CENTRE APP");
+		Helper.line(80, "-");
+		System.out.println("1. Administrator");
+		System.out.println("2. Teacher");
+		System.out.println("3. Student");
+		System.out.println("4. Exit");
+		Helper.line(80, "-");
+
 	}
 	
-	//Utility methods
+	*/
 
 	public static void setHeader(String header) {
 		Helper.line(80, "-");
@@ -163,7 +165,6 @@ public class C206_CaseStudy {
 		}
 		return avail;
 	}
-	
 	
 	//---------MAIN MENUS----------
 	
@@ -186,7 +187,7 @@ public class C206_CaseStudy {
 	}
 	
 	public static void userMenu() {
-		setHeader("COURSE MENU");
+		setHeader("USER MENU");
 		System.out.println("1. Add User");
 		System.out.println("2. Remove User");
 		System.out.println("3. View User");
@@ -204,7 +205,7 @@ public class C206_CaseStudy {
 	}
 	
 	public static void studentMenu() {
-		setHeader("COURSE MENU");
+		setHeader("STUDENT MENU");
 		System.out.println("1. Add Student");
 		System.out.println("2. Remove Student");
 		System.out.println("3. View Students");
@@ -213,7 +214,7 @@ public class C206_CaseStudy {
 	}
 	
 	public static void feeMenu() {
-		setHeader("COURSE MENU");
+		setHeader("FEE MENU");
 		System.out.println("1. Add Fee");
 		System.out.println("2. Remove Fee");
 		System.out.println("3. View Fee");
@@ -222,7 +223,7 @@ public class C206_CaseStudy {
 	}
 	
 	public static void enrolmentMenu() {
-		setHeader("COURSE MENU");
+		setHeader("ENROLMENT MENU");
 		System.out.println("1. Add Enrolment");
 		System.out.println("2. Remove Enrolment");
 		System.out.println("3. View Enrolment");
@@ -319,93 +320,18 @@ public class C206_CaseStudy {
 			System.out.println("Error with input");
 		}
 	}
-	
-	
-	// -------------Courses--------------
-	
-	
-	public static String retrieveAllCourse(ArrayList<Course> courseList) {
-		String output = "";
-		for (int i = 0; i < courseList.size(); i++) {
 
-			output += String.format("%-20d %-20s %-20s %-20.1f\n", 
-					courseList.get(i).getId(),
-					courseList.get(i).getDescription(),
-					courseList.get(i).getDuration(),
-					courseList.get(i).getMinimumGPA() );
-		}
-		return output;
-	}
-	
-	public static void viewCourse(ArrayList<Course> courseList) {
-		setHeader("USER LIST");
-		String output = String.format("%-20s %-20s %-20s %-20s\n", "ID", "DESCRIPTION", "DURATION", "MINIMUM GPA");
-		output += retrieveAllCourse(courseList);
-		System.out.println(output);
-	}
-	
-	public static User inputCourse() {
-		int id = Helper.readInt("Enter id > ");
-		String description = Helper.readString("Enter description > ");
-		String duration = Helper.readString("Enter duration > ");
-		double minimumGPA = Helper.readDouble("Enter minimum GPA > ");
-		
-		Course course = new Course(id, description, duration, minimumGPA);
-		return course;
-	}
-	
-	public static void addCourse(ArrayList<Course> courseList, Course course1) {
-		Course courseTest;
-		for(int i = 0; i < courseList.size(); i++) {
-			courseTest = courseList.get(i);
-			if (courseTest.getId() == course1.getId() )
-				return;
-		}
-		if ((course1.getDescription().isEmpty()) || (course1.getDuration().isEmpty()) ) {
-			return;
-		}
-		courseList.add(course1);
-	}
-	
-	public static void removeCourse(ArrayList<Course> courseList) {
-		int id = Helper.readInt("Enter id of course to delete > ");
-		Course deleteCourse = null;
-		boolean courseFound = false;
-		String option = "";
-		
-		for(Course course1 : courseList) {
-			if(course1.getId() == id) {
-				option = Helper.readString("Are you sure you want to delete " + course1.getId() + "? > ");
-				courseFound = true;
-				deleteCourse = course1;
-				break;
-			}
-		}
-		
-		if(courseFound == false) {
-			System.out.println("Course not found");
-		} else if (option.equalsIgnoreCase("no")) {
-			return;
-		} else if (option.equalsIgnoreCase("yes") && courseFound == true){
-			courseList.remove(deleteCourse);
-			System.out.println("Course has been deleted.");
-		} else {
-			System.out.println("Error with input");
-		}
-	}
-	
-	
-	
-	// ---------------Enrolment--------------
+	// ================================= View items
+	// =================================
 	public static String retrieveAllEnrolment(ArrayList<Enrolment> EnrolmentList) {
 		String output = "";
 
 		for (int i = 0; i < EnrolmentList.size(); i++) {
 			if (EnrolmentList.get(i).getIsAvailable()) {
-				output += String.format("%-10s %-30s %-10s %-10s\n", EnrolmentList.get(i).getid(),
+				output += String.format("%-10s %-30s %-10s %-10s %-20d\n", EnrolmentList.get(i).getid(),
 						EnrolmentList.get(i).getDescription(),
 						C206_CaseStudy.showAvailability(EnrolmentList.get(i).getIsAvailable()),
-						EnrolmentList.get(i).getDate());
+						EnrolmentList.get(i).getDate(), EnrolmentList.get(i).getOpticalZoom());
 			}
 		}
 		return output;
@@ -413,88 +339,140 @@ public class C206_CaseStudy {
 
 	public static void viewAllEnrolment(ArrayList<Enrolment> EnrolmentList) {
 		C206_CaseStudy.setHeader("ENROLMENT LIST");
-		String output = String.format("%-10s %-30s %-10s %-10s %-20s\n", "ID", "DESCRIPTION", "AVAILABLE",
-				"DATE");
+		String output = String.format("%-10s %-30s %-10s %-10s %-20s\n", "ASSET TAG", "DESCRIPTION", "AVAILABLE",
+				"DUE DATE", "OPTICAL ZOOM");
 		output += retrieveAllEnrolment(EnrolmentList);
 		System.out.println(output);
 	}
-	
-	public static Enrolment inputEnrolment() {
-		String id = Helper.readString("Enter enrolment id > ");
-		String description = Helper.readString("Enter description > ");
-		String date = Helper.readString("Enter role > ");
+
+	public static void viewAllFees(ArrayList<Fee> feeList) {
+		System.out.println(String.format("%-20s %-10s %-15s", "FEE TYPE", "AMOUNT", "DUE DATE"));
 		
-		Enrolment en = new Enrolment(id, description, date);
-		return en;
+
+		for (Fee fee : feeList) {
+			System.out.println(String.format("%-20s %-10.2f %-15s", fee.getFeeType(), fee.getAmount(), fee.getDueDate()));
+		}
+		
 	}
 
-	public static void addEnrolment(ArrayList<Enrolment> enrolmentList, Enrolment en) {
-		Enrolment enrol;
-		for (int i = 0; i < enrolmentList.size(); i++) {
-			enrol = enrolmentList.get(i);
-			if (enrol.getid().equalsIgnoreCase(en.getid()))
-				return;
-		}
-		if ((en.getid().isEmpty()) || (en.getDescription().isEmpty())) {
-			return;
+	public static String retrieveAllCourse(ArrayList<Course> courseList) {
+		String result = "Course List\n";
+		String format = "%-5s %-15s %-20s %-30s\n";
+		result += String.format(format, "ID", "Title", "Instructor", "Schedule");
+
+		for (Course course : courseList) {
+			result += String.format(format, course.getCourseCode(), course.getTitle(), course.getInstructor(),
+					course.getSchedule());
 		}
 
-		enrolmentList.add(en);
+		return result;
 	}
-	
-	public static void removeEnrolment(ArrayList<Enrolment> enrolmentList) {
-		String deleteID = Helper.readString("Enter id of enrolment to delete > ");
-		Enrolment deleteEnrolment = null;
-		boolean enrolmentFound = false;
-		String option = "";
-		
-		for(Enrolment enrol : enrolmentList) {
-			if(enrol.getid().equals(deleteID)) {
-				option = Helper.readString("Are you sure you want to delete " + enrol.getDescription() + "? > ");
-				enrolmentFound = true;
-				deleteEnrolment = enrol;
-				break;
+
+	public static void viewAllCourse(ArrayList<Course> courseList) {
+		System.out.println("Course List");
+		String format = "%-5s %-15s %-20s %-30s\n";
+		System.out.printf(format, "ID", "Title", "Instructor", "Schedule");
+
+		for (Course course : courseList) {
+			System.out.printf(format, course.getCourseCode(), course.getTitle(), course.getInstructor(),
+					course.getSchedule());
+		}
+	}
+		public static void viewStudentList(ArrayList<Student>StudentList) {
+			System.out.println("Student List");
+			String format= "%-15s %-15s %-10s %-30s %-15s\n";
+			System.out.printf(format,"Name","DOB","NRIC","Course","Contact Number");
+			for(Student student:StudentList) {
+				System.out.printf(format,student.getName(),student.getDob(),student.getNric(),student.getCourse(),student.getContactNumber());;
 			}
 		}
-		
-		if(enrolmentFound == false) {
-			System.out.println("Enrolment not found");
-		} else if (option.equalsIgnoreCase("no")) {
-			return;
-		} else if (option.equalsIgnoreCase("yes") && enrolmentFound == true){
-			enrolmentList.remove(deleteEnrolment);
-			System.out.println("Enrolment has been deleted.");
-		} else {
-			System.out.println("Error with input");
-		}
+	
+
+	// ================================= Adding =================================
+	public static void addEnrolment(ArrayList<Enrolment> EnrolmentList, Enrolment en) {
+
+		EnrolmentList.add(en);
 	}
-	
-	
-	// -------------Fee--------------
+
+
 	public static void addFee(ArrayList<Fee> feeList, String feeType, double amount, String dueDate) {
 		Fee newFee = new Fee(feeType, amount, dueDate);
 		feeList.add(newFee);
 		System.out.println("Fee added successfully.");
 	}
 
-	public static void viewAllFees(ArrayList<Fee> feeList) {
-		System.out.println("Fee List");
-		String format = "%-20s %-10s %-15s\n";
-		System.out.printf(format, "FEE TYPE", "AMOUNT", "DUE DATE");
+	public static Course inputCourse() {
+		String id = Helper.readString("Enter Course ID: ");
+		String title = Helper.readString("Enter Course Title: ");
+		String instructor = Helper.readString("Enter Instructor Name: ");
+		String schedule = Helper.readString("Enter Schedule: ");
 
-		for (Fee fee : feeList) {
-			System.out.printf(format, fee.getFeeType(), fee.getAmount(), fee.getDueDate());
-		}
+		Course newCourse = new Course(id, title, instructor, schedule);
+		return newCourse;
 	}
 
-	public static void deleteFee(ArrayList<Fee> feeList, int index) {
-		if (index >= 0 && index < feeList.size()) {
-			feeList.remove(index);
+	public static void addCourse(ArrayList<Course> courseList, Course course) {
+		courseList.add(course);
+	}
+	public static void addStudent(ArrayList<Student> StudentList) {
+		String name=Helper.readString("enter your name: ");
+		String dob=Helper.readString("Enter your date of birth: ");
+		String nric=Helper.readString("Enter your nric number: ");
+		String course=Helper.readString("Enter your desired course: ");
+		int contact=Helper.readInt("Enter your contact number: ");
+		StudentList.add(new Student(name,dob,nric,course,contact));
+		System.out.println("Student has been added");
+	}
+
+	// ================================= Deleting =================================
+	public static void deleteFee(ArrayList<Fee> feeList, int feeIndex) {
+		if (feeIndex >= 0 && feeIndex < feeList.size()) {
+			feeList.remove(feeIndex);
 			System.out.println("Fee deleted successfully.");
 		} else {
 			System.out.println("Invalid fee index.");
 		}
+	}
 
+	public static void deleteCourse(ArrayList<Course> courseList) {
+		viewAllCourse(courseList);
+
+		String courseCodeToDelete = Helper.readString("Enter the code of the course to delete: ");
+
+		boolean found = false;
+		for (Course course : courseList) {
+			if (course.getCourseCode().equalsIgnoreCase(courseCodeToDelete)) {
+				courseList.remove(course);
+				System.out.println("Course deleted successfully.");
+				found = true;
+				break;
+			}
+		}
+
+		if (!found) {
+			System.out.println("Course not found.");
+		}
+	}
+	public static void deleteStudent(ArrayList<Student>StudentList) {
+		viewStudentList(StudentList);
+		String nrictodelete=Helper.readString("Enter the nric number to be deleted: ");
+		for(Student student:StudentList) {
+			if(student.getNric().equalsIgnoreCase(nrictodelete)) {
+				StudentList.remove(student);
+				System.out.println("Student has been successfully deleted");
+				
+			}
+		}
+		
+	}
+	
+	public static void deleteEnrolment(ArrayList<Enrolment> EnrolmentList, int index) {
+		if (index >= 0 && index < EnrolmentList.size()) {
+			EnrolmentList.remove(index);
+			System.out.println("Enrolment deleted successfully.");
+		} else {
+			System.out.println("Invalid Enrolment ID.");
+		}
 	}
 
 }
