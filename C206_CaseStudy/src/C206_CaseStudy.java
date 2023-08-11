@@ -151,11 +151,11 @@ public class C206_CaseStudy {
 	}
 
 	public static void viewAllFees(ArrayList<Fee> feeList) {
-		System.out.println(String.format("%-20s %-10s %-15s\n", "FEE TYPE", "AMOUNT", "DUE DATE"));
+		System.out.println(String.format("%-20s %-10s %-15s", "FEE TYPE", "AMOUNT", "DUE DATE"));
 		
 
 		for (Fee fee : feeList) {
-			System.out.println(String.format("%-20s %-10.2f %-15s", fee.getFeeType(), fee.getAmount(), fee.getDueDate()));
+			System.out.println(String.format("%-20s %-10.2f %-15s\n", fee.getFeeType(), fee.getAmount(), fee.getDueDate()));
 		}
 		
 	}
