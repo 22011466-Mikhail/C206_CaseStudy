@@ -132,33 +132,20 @@ public class C206_CaseStudyTest {
 		testOutput += String.format("%-15s %10s %-10s\n","EN2", "C01","Yes");
 		// Test that the details are displayed correctly
 		assertEquals("Test that the display is correct.", testOutput, allEnrolment);
-
-		assertEquals("Test that nothing is displayed", testOutput, allChromebook);
-
-
-
-
-
-
 		//Test Case 3
 		en3.setIsAvailable(false);
 		C206_CaseStudy.addEnrolment(EnrolmentList);
 		assertEquals("Test that Enrolment arraylist size is 2.", 3,  EnrolmentList.size());
 		assertFalse("Test that the last item in the arraylist is not available",  EnrolmentList.get(2).getIsAvailable());
-=======
+
 	@Test
 	public void testRetrieveAllCamcorder() {
 		// Test Case 1
 		// Test if Item list is not null and empty
 		assertNotNull("Test if there is valid Enrolment arraylist to add to", EnrolmentList);
 		assertEquals("Test that the Enrolment arraylist is empty.", 0, EnrolmentList.size());
->>>>>>> branch 'master' of https://github.com/22011466-Mikhail/C206_CaseStudy.git
+
 		// Attempt to retrieve the Enrolment
-<<<<<<< HEAD
-		allEnrolment= C206_CaseStudy.retrieveAllEnrolment( EnrolmentList);
-		testOutput = String.format("%-15s %10s %-10s\n","EN3", "C03","Yes");
-		testOutput += String.format("%-15s %10s %-10s\n","EN4", "C04","Yes");
-=======
 		String allEnrolment = C206_CaseStudy.retrieveAllEnrolment(EnrolmentList);
 		String testOutput = "";
 		// Test if the output is empty
@@ -171,13 +158,13 @@ public class C206_CaseStudyTest {
 		// Attempt to retrieve the Enrolment
 
 		allEnrolment = C206_CaseStudy.retrieveAllEnrolment(EnrolmentList);
-		testOutput = String.format("%-10s %-30s %-10s %-10s %-20d\n", "CC0011", "Nikon HDSLR", "Yes", "", 40);
-		testOutput += String.format("%-10s %-30s %-10s %-10s %-20d\n", "CC0012", "Sony DSC-RX100M7", "Yes", "", 20);
+		testOutput = String.format("%-15s %10s %-10s\n","EN3", "C03","Yes");
+		testOutput += String.format("%-15s %10s %-10s\n","EN4", "C04","Yes");
 
->>>>>>> branch 'master' of https://github.com/22011466-Mikhail/C206_CaseStudy.git
+
 		// Test that the details are displayed correctly
 		assertEquals("Test that the display is correct.", testOutput, allEnrolment);
->>>>>>> branch 'master' of https://github.com/22011466-Mikhail/C206_CaseStudy.git
+
 	}
 	@Test
 	public void testDeleteEnrolment() {
