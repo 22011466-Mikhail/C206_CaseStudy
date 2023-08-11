@@ -155,7 +155,7 @@ public class C206_CaseStudy {
 		
 
 		for (Fee fee : feeList) {
-			System.out.println(String.format("%-20s %-10.2f %-15s\n", fee.getFeeType(), fee.getAmount(), fee.getDueDate()));
+			System.out.println(String.format("%-20s %-10.2f %-15s", fee.getFeeType(), fee.getAmount(), fee.getDueDate()));
 		}
 		
 	}
