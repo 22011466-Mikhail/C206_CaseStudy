@@ -100,7 +100,11 @@ public class C206_CaseStudy {
 						} else if(functionOption == 2) {
 							int feeIndexToDelete = Helper.readInt("Enter the index of the fee to delete: ");
 							C206_CaseStudy.deleteFee(feeList, feeIndexToDelete);
-						} else if(functionOption == 3) {
+						} else if (functionOption == 3) {
+						    viewAllFees(feeList);
+						    int feeIndexToUpdate = Helper.readInt("Enter the index of the fee to update: ");
+						    updateFee(feeList, feeIndexToUpdate);
+						} else if(functionOption == 4) {
 							viewAllFees(feeList);
 						}
 					}
@@ -213,13 +217,15 @@ public class C206_CaseStudy {
 	}
 	
 	public static void feeMenu() {
-		setHeader("FEE MENU");
-		System.out.println("1. Add Fee");
-		System.out.println("2. Remove Fee");
-		System.out.println("3. View Fee");
-		System.out.println("4. Quit");
-		Helper.line(80, "-");
+	    setHeader("FEE MENU");
+	    System.out.println("1. Add Fee");
+	    System.out.println("2. Remove Fee");
+	    System.out.println("3. Update Fee");
+	    System.out.println("4. View Fee");
+	    System.out.println("5. Quit");
+	    Helper.line(80, "-");
 	}
+
 	
 	public static void enrolmentMenu() {
 		setHeader("ENROLMENT MENU");
