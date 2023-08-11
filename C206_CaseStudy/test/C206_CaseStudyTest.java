@@ -56,7 +56,9 @@ public class C206_CaseStudyTest {
 		//test if the expected output string same as the list of courses retrieved 
 				String allCourse= C206_CaseStudy.retrieveAllCourse(courseList);
 				String testOutput = "";
-				testOutput = String.format("%-5s %-15s %-20s %-30s\n","C01", "Mathematics", "Adam Salah", "Every Saturday at 5.00pm to 7.00pm");
+				testOutput = String.format("Course List\n");
+				testOutput += String.format("%-5s %-15s %-20s %-30s\n","ID", "Title", "Instructor", "Schedule");
+				testOutput += String.format("%-5s %-15s %-20s %-30s\n","C01", "Mathematics", "Adam Salah", "Every Saturday at 5.00pm to 7.00pm");
 				testOutput += String.format("%-5s %-15s %-20s %-30s\n","C02", "English", "Alice Lum", "Every Sunday at 7.00pm to 9.00pm");
 			
 				assertEquals("Test that ViewAllCourselist", testOutput, allCourse);
