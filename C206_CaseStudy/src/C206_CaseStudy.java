@@ -109,11 +109,11 @@ public class C206_CaseStudy {
 						functionOption = Helper.readInt("Insert option > ");
 						
 						if(functionOption == 1) {
-							//addEnrolment(enrolmentList, inputUser());
+							addEnrolment(EnrolmentList);
 						} else if(functionOption == 2) {
-							//deleteEnrolment(EnrolmentList);
+							deleteEnrolment(EnrolmentList);
 						} else if(functionOption == 3) {
-							//viewEnrolment(EnrolmentList);
+							viewAllEnrolment(EnrolmentList);
 						}
 					}
 				}  else if(option == 5) { // ----USER FUNCTION-----
@@ -324,12 +324,13 @@ public class C206_CaseStudy {
 	// ================================= View items =================================
 	public static String retrieveAllEnrolment(ArrayList<Enrolment> EnrolmentList) {
 		String output = "";
-
-		for (int i = 0; i < EnrolmentList.size(); i++) {
+		//int enrol_id = 0;
+		for (int i = 1; i < EnrolmentList.size(); i++) {
 			if (EnrolmentList.get(i).getIsAvailable()) {
-				output += String.format("%-16s %-10s %-10s\n", EnrolmentList.get(i).getid(),EnrolmentList.get(i).getCourse(),
+				output += String.format("%-16s %-10s %-10s\n", ("EN"+i),EnrolmentList.get(i).getCourse(),
 						C206_CaseStudy.showAvailability(EnrolmentList.get(i).getIsAvailable())
 						);
+				//enrol_id++;
 			}
 		}
 		return output;
@@ -467,12 +468,19 @@ public class C206_CaseStudy {
 		for(Student student:StudentList) {
 			if(student.getNric().equalsIgnoreCase(nrictodelete)) {
 				StudentList.remove(student);
+
+				System.out.println("Student has been successfully deleted");	
+
 				System.out.println("Student has been successfully deleted");
+			}else {
+				System.out.println("Student not found");
+					
+				}
 				
 			}
 		}
 		
-	}
+	
 	
 	public static void deleteEnrolment(ArrayList<Enrolment> EnrolmentList, int index) {
 		if (index >= 0 && index < EnrolmentList.size()) {
@@ -484,17 +492,23 @@ public class C206_CaseStudy {
 	}
 
 	public static void deleteEnrolment(ArrayList<Enrolment> EnrolmentList) {
-		String ask_id = Helper.readString("Enter Enrolment ID >");
-		for(Enrolment a : EnrolmentList)
-		{
-			if (ask_id.contains(a.getid())) {
-				EnrolmentList.remove(a);
-				System.out.println("Enrolment deleted successfully.");
-			} else {
-				System.out.println("Invalid Enrolment ID.");
+		String ask_id = Helper.readString("Enter Course ID >");
+		boolean found = false;
+		for(Enrolment en: EnrolmentList) {
+			if(en.getCourse().equalsIgnoreCase(ask_id)) {
+				EnrolmentList.remove(en);
+				System.out.println("Enrolment remove succesfully");
+				found = true;
+				break;
 			}
 		}
+		if (!found) {
+		System.out.println("Enrolment not found.");
+		}
+		}
 
-	}
+
+	
+
 
 }

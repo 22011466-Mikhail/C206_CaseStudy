@@ -1,6 +1,6 @@
 //ycc
 public class Enrolment  {
-	private String enrol_id ;
+	
 	private String course_id;
 	public boolean isAvailable;
 	
@@ -12,14 +12,7 @@ public class Enrolment  {
 	public String getCourse() {
 		return course_id;
 	}
-	public String getid() {
-		for(int i=1; i<999; i++) {
-			enrol_id = "EN" + i;
-		}
 
-		return enrol_id;
-	}
-	
 	public boolean getIsAvailable(){
 		return isAvailable;
 	}
