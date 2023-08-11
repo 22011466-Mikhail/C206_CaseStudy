@@ -538,6 +538,25 @@ public class C206_CaseStudy {
 		System.out.println("Enrolment not found.");
 		}
 		}
+	// ================================= Editing =================================
+	public static void updateFee(ArrayList<Fee> feeList, int feeIndex) {
+	    if (feeIndex >= 0 && feeIndex < feeList.size()) {
+	        Fee feeToUpdate = feeList.get(feeIndex);
+
+	        String newFeeType = Helper.readString("Enter new Fee Type (Tuition Fee/Exam Fee): ");
+	        double newAmount = Helper.readDouble("Enter new Amount: ");
+	        String newDueDate = Helper.readString("Enter new Due Date (YYYY-mm-dd): ");
+
+	        feeToUpdate.setFeeType(newFeeType);
+	        feeToUpdate.setAmount(newAmount);
+	        feeToUpdate.setDueDate(newDueDate);
+
+	        System.out.println("Fee details updated successfully.");
+	    } else {
+	        System.out.println("Invalid fee index.");
+	    }
+	}
+
 
 
 	

@@ -14,6 +14,7 @@ public class Fee {
     public String getFeeType() {
         return feeType;
     }
+    
 
     public double getAmount() {
         return amount;
@@ -21,5 +22,16 @@ public class Fee {
 
     public String getDueDate() {
         return dueDate;
+    }
+    public void setFeeType(String feeType) {
+        this.feeType = feeType;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public void setDueDate(String dueDate) {
+        this.dueDate = dueDate;
     }
 }
