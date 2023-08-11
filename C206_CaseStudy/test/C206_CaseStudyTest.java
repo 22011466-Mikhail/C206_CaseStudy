@@ -103,40 +103,39 @@ public class C206_CaseStudyTest {
 		assertNotNull("Test if there is valid Enrolment arraylist to add to", EnrolmentList);
 		assertEquals("Test that the Enrolment arraylist is empty.", 0, EnrolmentList.size());
 		// Attempt to retrieve the Enrolment
-		String allChromebook= C206_CaseStudy.retrieveAllEnrolment(EnrolmentList);
+		String allEnrolment= C206_CaseStudy.retrieveAllEnrolment(EnrolmentList);
 		String testOutput = "";
 		// Test if the output is empty
-		assertEquals("Test that nothing is displayed", testOutput, allChromebook);
-
+		assertEquals("Test that nothing is displayed", testOutput, allEnrolment);
 		//Test Case 2
 		C206_CaseStudy.addEnrolment(EnrolmentList);
 		C206_CaseStudy.addEnrolment(EnrolmentList);
 		// Test that the list is not empty
-		assertEquals("Test that Chromebook arraylist size is 2.", 2, EnrolmentList.size());
+		assertEquals("Test that Enrolment arraylist size is 2.", 2, EnrolmentList.size());
 		// Attempt to retrieve the Enrolment
-		allChromebook= C206_CaseStudy.retrieveAllEnrolment(EnrolmentList);
-		testOutput = String.format("%-10s %-30s %-10s %-10s %-20s\n","CB0011", "My Google Chromebook 1st", "Yes", "", "Mac OS");
-		testOutput += String.format("%-10s %-30s %-10s %-10s %-20s\n","CB0012", "SAMSUNG Chromebook 4+", "Yes", "", "Win 10");
+		allEnrolment= C206_CaseStudy.retrieveAllEnrolment(EnrolmentList);
+		testOutput = String.format("%-15s %10s %-10s\n","EN1", "C01","Yes");
+		testOutput += String.format("%-15s %10s %-10s\n","EN2", "C01","Yes");
 		// Test that the details are displayed correctly
-		assertEquals("Test that the display is correct.", testOutput, allChromebook);
+		assertEquals("Test that the display is correct.", testOutput, allEnrolment);
 
 		//Test Case 3
 		en3.setIsAvailable(false);
 		C206_CaseStudy.addEnrolment(EnrolmentList);
-		assertEquals("Test that Chromebook arraylist size is 2.", 3,  EnrolmentList.size());
+		assertEquals("Test that Enrolment arraylist size is 2.", 3,  EnrolmentList.size());
 		assertFalse("Test that the last item in the arraylist is not available",  EnrolmentList.get(2).getIsAvailable());
 		// Attempt to retrieve the Enrolment
-		allChromebook= C206_CaseStudy.retrieveAllEnrolment( EnrolmentList);
-		testOutput = String.format("%-10s %-30s %-10s %-10s %-20s\n","CB0011", "My Google Chromebook 1st", "Yes", "", "Mac OS");
-		testOutput += String.format("%-10s %-30s %-10s %-10s %-20s\n","CB0012", "SAMSUNG Chromebook 4+", "Yes", "", "Win 10");
+		allEnrolment= C206_CaseStudy.retrieveAllEnrolment( EnrolmentList);
+		testOutput = String.format("%-15s %10s %-10s\n","EN3", "C03","Yes");
+		testOutput += String.format("%-15s %10s %-10s\n","EN4", "C04","Yes");
 		// Test that the details are displayed correctly
-		assertEquals("Test that the display is correct.", testOutput, allChromebook);
+		assertEquals("Test that the display is correct.", testOutput, allEnrolment);
 	}
 	
 	public void testDeleteEnrolment() {
         // Add enrolment to EnrolmentList
-       EnrolmentList.add(new Enrolment("CC01"));
-       EnrolmentList.add(new Enrolment("CC02"));
+       EnrolmentList.add(new Enrolment("C01"));
+       EnrolmentList.add(new Enrolment("C02"));
 
         // Delete an Enrolment
         C206_CaseStudy.deleteEnrolment(EnrolmentList);
