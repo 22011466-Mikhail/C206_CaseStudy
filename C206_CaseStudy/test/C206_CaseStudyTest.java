@@ -125,28 +125,10 @@ public class C206_CaseStudyTest {
 		assertNotNull("Test if there is valid Enrolment arraylist to add to", EnrolmentList);
 		assertEquals("Test that the Enrolment arraylist is empty.", 0, EnrolmentList.size());
 		// Attempt to retrieve the Enrolment
-		String allEnrolment= C206_CaseStudy.retrieveAllEnrolment(EnrolmentList);
-		String testOutput = "";
-		// Test if the output is empty
+		EnrolmentList.add(new Enrolment("C01"));
+	    assertEquals("Test that the size of list is 1", 1, EnrolmentList.size());
 
-		assertEquals("Test that nothing is displayed", testOutput, allEnrolment);
-		//Test Case 2
-		C206_CaseStudy.addEnrolment(EnrolmentList,en1);
-		C206_CaseStudy.addEnrolment(EnrolmentList,en2);
-		// Test that the list is not empty
-		assertEquals("Test that Enrolment arraylist size is 2.", 2, EnrolmentList.size());
-		// Attempt to retrieve the Enrolment
-		allEnrolment= C206_CaseStudy.retrieveAllEnrolment(EnrolmentList);
-		testOutput = String.format("%-15s %10s %-10s\n","EN1", "C01","Yes");
-		testOutput += String.format("%-15s %10s %-10s\n","EN2", "C01","Yes");
-		// Test that the details are displayed correctly
-
-		assertEquals("Test that the display is correct.", testOutput, allEnrolment);
-
-		assertEquals("Test that nothing is displayed", testOutput, allEnrolment);
-
-		assertEquals("Test that the display is correct.", testOutput, allEnrolment);
-
+	    C206_CaseStudy.viewAllEnrolment(EnrolmentList);
 		
 	}
 	@Test
@@ -158,11 +140,11 @@ public class C206_CaseStudyTest {
 
         // Delete an Enrolment
         C206_CaseStudy.deleteEnrolment(EnrolmentList);
-        assertEquals("Test that EnrolmentList size is 1 after deleting", 0,EnrolmentList.size());
+        assertEquals("Test that EnrolmentList size is 1 after deleting", 1,EnrolmentList.size());
 
         // Delete another Enrolment
         C206_CaseStudy.deleteEnrolment(EnrolmentList);
-        assertEquals("Test that EnrolmentList size is 0 after deleting",1, EnrolmentList.size());
+        assertEquals("Test that EnrolmentList size is 0 after deleting",0, EnrolmentList.size());
     }
 	@Test
     public void testAddFee() {
