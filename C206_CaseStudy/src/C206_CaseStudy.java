@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class C206_CaseStudy {
-//ycc
+//yc 
 //jay
 //hakim
 //Norhilman
@@ -28,7 +28,8 @@ public class C206_CaseStudy {
 		courseList.add(new Course("C01", "Mathematics", "Adam Salah", "Every Saturday at 5.00pm to 7.00pm"));
 		courseList.add(new Course("C02", "English", "Alice Lum", "Every Sunday at 7.00pm to 9.00pm"));
 		EnrolmentList.add(new Enrolment( "C01"));
-
+		Enrolment en1 = new Enrolment ("C01");
+		
 		int option = 0;
 		int functionOption = 0;
 		User loginUser = null;
@@ -108,7 +109,7 @@ public class C206_CaseStudy {
 						functionOption = Helper.readInt("Insert option > ");
 
 						if (functionOption == 1) {
-							addEnrolment(EnrolmentList,"");
+							addEnrolment(EnrolmentList,en1);
 						} else if (functionOption == 2) {
 							deleteEnrolment(EnrolmentList);
 						} else if (functionOption == 3) {
@@ -387,8 +388,21 @@ public class C206_CaseStudy {
 
 	public static void addEnrolment(ArrayList<Enrolment> EnrolmentList ,Enrolment en) {
 		String id = Helper.readString("Enter Course ID: ");
-		EnrolmentList.add(new Enrolment(id));
-		System.out.println("Enrolment added successfully.");
+		boolean found = false;
+		
+			for (Enrolment enrol : EnrolmentList) {
+				if (enrol.getCourse().equalsIgnoreCase(id)) {
+					
+					System.out.println("Error: Duplicate course code. Enrolment cannot be added.");
+					found = true;
+					break;
+				}
+			}
+			if (!found) {
+				EnrolmentList.add(new Enrolment(id));
+				System.out.println("Enrolment added successfully.");
+			
+		}
 	}
 
 
@@ -500,7 +514,8 @@ public class C206_CaseStudy {
 		String ask_id = Helper.readString("Enter Course ID >");
 		boolean found = false;
 		for (Enrolment en : EnrolmentList) {
-			if (en.getCourse().equalsIgnoreCase(ask_id)) {
+			boolean equalsIgnoreCase = en.getCourse().equalsIgnoreCase(ask_id);
+			if (equalsIgnoreCase) {
 				EnrolmentList.remove(en);
 				System.out.println("Enrolment remove succesfully");
 				found = true;
