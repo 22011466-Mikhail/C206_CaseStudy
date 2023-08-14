@@ -6,6 +6,8 @@ public class C206_CaseStudy {
 //hakim
 //Norhilman
 
+	private static final int OPTION_PROMPT = Helper.readInt("Insert option > ");
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
@@ -58,7 +60,7 @@ public class C206_CaseStudy {
 				if (option == 1) { // ----- COURSE FUNCTION ------
 					while (functionOption != 4) {
 						courseMenu();
-						functionOption = Helper.readInt("Insert option > ");
+						functionOption = OPTION_PROMPT;
 
 						if (functionOption == 1) {
 							addCourse(courseList, inputCourse());
@@ -73,7 +75,7 @@ public class C206_CaseStudy {
 				} else if (option == 2) { // ----STUDENT FUNCTION-----
 					while (functionOption != 4) {
 						studentMenu();
-						functionOption = Helper.readInt("Insert option > ");
+						functionOption = OPTION_PROMPT;
 
 						if (functionOption == 1) {
 							addStudent(StudentList);
@@ -87,7 +89,7 @@ public class C206_CaseStudy {
 				} else if (option == 3) { // ---- FEE FUNCTION-----
 					while (functionOption != 4) {
 						feeMenu();
-						functionOption = Helper.readInt("Insert option > ");
+						functionOption = OPTION_PROMPT;
 
 						if (functionOption == 1) {
 							String feeType = Helper.readString("Enter Fee Type (Tuition Fee/Exam Fee): ");
@@ -105,10 +107,10 @@ public class C206_CaseStudy {
 				} else if (option == 4) { // ----ENROLMENT FUNCTION-----
 					while (functionOption != 4) {
 						enrolmentMenu();
-						functionOption = Helper.readInt("Insert option > ");
+						functionOption = OPTION_PROMPT;
 
 						if (functionOption == 1) {
-							addEnrolment(EnrolmentList,"");
+							addEnrolment(EnrolmentList);
 						} else if (functionOption == 2) {
 							deleteEnrolment(EnrolmentList);
 						} else if (functionOption == 3) {
@@ -118,7 +120,7 @@ public class C206_CaseStudy {
 				} else if (option == 5) { // ----USER FUNCTION-----
 					while (functionOption != 4) {
 						userMenu();
-						functionOption = Helper.readInt("Insert option > ");
+						functionOption = OPTION_PROMPT;
 
 						if (functionOption == 1) {
 							addUser(userList, inputUser());
@@ -316,8 +318,9 @@ public class C206_CaseStudy {
 	public static String retrieveAllEnrolment(ArrayList<Enrolment> EnrolmentList) {
 		String output = "";
 		for (int i = 0; i < EnrolmentList.size(); i++) {
+				boolean isAvailable = EnrolmentList.get(i).getIsAvailable();
 				output += String.format("%-16s %-10s %-10s\n", ("EN"+(i+1)),EnrolmentList.get(i).getCourse(),
-						C206_CaseStudy.showAvailability(EnrolmentList.get(i).getIsAvailable())
+						C206_CaseStudy.showAvailability(isAvailable)
 						);
 		
 
