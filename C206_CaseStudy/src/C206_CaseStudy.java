@@ -6,8 +6,6 @@ public class C206_CaseStudy {
 //hakim
 //Norhilman
 
-	private static final int OPTION_PROMPT = Helper.readInt("Insert option > ");
-
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
@@ -60,7 +58,7 @@ public class C206_CaseStudy {
 				if (option == 1) { // ----- COURSE FUNCTION ------
 					while (functionOption != 4) {
 						courseMenu();
-						functionOption = OPTION_PROMPT;
+						functionOption = Helper.readInt("Insert option > ");
 
 						if (functionOption == 1) {
 							addCourse(courseList, inputCourse());
@@ -75,7 +73,7 @@ public class C206_CaseStudy {
 				} else if (option == 2) { // ----STUDENT FUNCTION-----
 					while (functionOption != 4) {
 						studentMenu();
-						functionOption = OPTION_PROMPT;
+						functionOption = Helper.readInt("Insert option > ");
 
 						if (functionOption == 1) {
 							addStudent(StudentList);
@@ -89,7 +87,7 @@ public class C206_CaseStudy {
 				} else if (option == 3) { // ---- FEE FUNCTION-----
 					while (functionOption != 4) {
 						feeMenu();
-						functionOption = OPTION_PROMPT;
+						functionOption = Helper.readInt("Insert option > ");
 
 						if (functionOption == 1) {
 							String feeType = Helper.readString("Enter Fee Type (Tuition Fee/Exam Fee): ");
@@ -107,10 +105,10 @@ public class C206_CaseStudy {
 				} else if (option == 4) { // ----ENROLMENT FUNCTION-----
 					while (functionOption != 4) {
 						enrolmentMenu();
-						functionOption = OPTION_PROMPT;
+						functionOption = Helper.readInt("Insert option > ");
 
 						if (functionOption == 1) {
-							addEnrolment(EnrolmentList);
+							addEnrolment(EnrolmentList,"");
 						} else if (functionOption == 2) {
 							deleteEnrolment(EnrolmentList);
 						} else if (functionOption == 3) {
@@ -120,7 +118,7 @@ public class C206_CaseStudy {
 				} else if (option == 5) { // ----USER FUNCTION-----
 					while (functionOption != 4) {
 						userMenu();
-						functionOption = OPTION_PROMPT;
+						functionOption = Helper.readInt("Insert option > ");
 
 						if (functionOption == 1) {
 							addUser(userList, inputUser());
