@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class C206_CaseStudy {
-//ycc 
+//yc
 //jay
 //hakim
 //Norhilman
