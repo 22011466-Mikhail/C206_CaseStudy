@@ -317,8 +317,9 @@ public class C206_CaseStudy {
 	public static String retrieveAllEnrolment(ArrayList<Enrolment> EnrolmentList) {
 		String output = "";
 		for (int i = 0; i < EnrolmentList.size(); i++) {
+				boolean isAvailable = EnrolmentList.get(i).getIsAvailable();
 				output += String.format("%-16s %-10s %-10s\n", ("EN"+(i+1)),EnrolmentList.get(i).getCourse(),
-						C206_CaseStudy.showAvailability(EnrolmentList.get(i).getIsAvailable())
+						C206_CaseStudy.showAvailability(isAvailable)
 						);
 		
 
