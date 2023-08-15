@@ -14,8 +14,7 @@ public class C206_CaseStudy {
 		ArrayList<Course> courseList = new ArrayList<Course>();
 		ArrayList<Enrolment> EnrolmentList = new ArrayList<Enrolment>();
 		ArrayList<Student> StudentList = new ArrayList<Student>();
-		StudentList.add(new Student("Adam Salah", "2003-08-25", "M7654", "Mathematics", 83435469));
-
+		
 		feeList.add(new Fee("Tuition Fee", 1000.0, "2023-09-01"));
 
 		// addition of sample objects to arraylists
@@ -23,7 +22,8 @@ public class C206_CaseStudy {
 		userList.add(new User("user2", "password2", "teacher"));
 		userList.add(new User("user3", "password3", "admin"));
 
-		StudentList.add(new Student("Adam Salah", "2003-08-25", "M7654", "Mathematics", 83435469));
+		StudentList.add(new Student("Adil", "2003-08-25", "M7654", "Mathematics", 83435469));
+		StudentList.add(new Student("Abraham", "2003-09-27", "M7684", "Mathematics", 83435423));
 
 		courseList.add(new Course("C01", "Mathematics", "Adam Salah", "Every Saturday at 5.00pm to 7.00pm"));
 		courseList.add(new Course("C02", "English", "Alice Lum", "Every Sunday at 7.00pm to 9.00pm"));
@@ -497,9 +497,9 @@ public class C206_CaseStudy {
 
 				System.out.println("Student has been successfully deleted");
 
-				System.out.println("Student has been successfully deleted");
 			} else {
 				System.out.println("Student not found");
+				viewStudentList(StudentList);
 
 			}
 

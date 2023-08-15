@@ -188,13 +188,14 @@ public class C206_CaseStudyTest {
     @Test
     public void testdeleteStudent() {
     	//Add student to StudentList 
-        StudentList.add(new Student("Bryan","2001-06-30","N4567","English",82567898));
-        StudentList.add(new Student("Cedric","2001-07-31","N8712","English",82567893));
-        //Delete a Student
-        C206_CaseStudy.deleteStudent(StudentList);
-        assertEquals("Test that StudentList size is 1 after deleting",1,StudentList.size());
-        
-    }
+    	 StudentList.add(new Student("Bryan","2001-06-30","N4567","English",82567898));
+         StudentList.add(new Student("Cedric","2001-07-31","N8712","English",82567893));
+
+         // Delete a student
+         C206_CaseStudy.deleteStudent(StudentList);
+         assertEquals( "Test that StudentList size is 1 after deleting",1,StudentList.size());
+     }
+    
 
 	@After
 	public void tearDown() throws Exception {
