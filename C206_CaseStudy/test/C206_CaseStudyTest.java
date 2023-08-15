@@ -102,8 +102,9 @@ public class C206_CaseStudyTest {
 		assertSame("Test that the remaining course is the second course in the list", C02, courseList.get(0));
 
 	}
-	@Test
+	@Test 
 	public void testAddEnrolment() {
+		//Test whether the list is empty or not
 		assertNotNull("Test if there is valid Enrolment arraylist to add to", EnrolmentList);
 		assertEquals("Test that the Enrolment arraylist is empty.", 0, EnrolmentList.size());
 		//Given an empty list, after adding 1 item, the size of the list is 1

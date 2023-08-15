@@ -320,11 +320,7 @@ public class C206_CaseStudy {
 				boolean isAvailable = EnrolmentList.get(i).getIsAvailable();
 				output += String.format("%-16s %-10s %-10s\n", ("EN"+(i+1)),EnrolmentList.get(i).getCourse(),
 						C206_CaseStudy.showAvailability(isAvailable)
-						);
-		
-
-			
-			
+						);		
 		}
 		return output;
 	}
