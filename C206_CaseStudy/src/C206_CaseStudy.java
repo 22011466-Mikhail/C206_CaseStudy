@@ -1,6 +1,12 @@
 import java.util.ArrayList;
 
 public class C206_CaseStudy {
+private static final int COURSE_EXIT = 4;
+private static final int COURSE_VIEW = 3;
+private static final int COURSE_DELETE = 2;
+private static final int COURSE_ADD = 1;
+private static final int COURSE = 1;
+
 //yc
 //jayanth
 //hakim
@@ -55,17 +61,19 @@ public class C206_CaseStudy {
 		if (loginUser != null) {
 			while (option != 6) {
 				menu();
+				
+				
 				option = Helper.readInt("Insert menu option > ");
-				if (option == 1) { // ----- COURSE FUNCTION ------
-					while (functionOption != 4) {
+				if (option == COURSE) { // ----- COURSE FUNCTION ------
+					while (functionOption != COURSE_EXIT) {
 						courseMenu();
 						functionOption = Helper.readInt("Insert option > ");
 
-						if (functionOption == 1) {
+						if (functionOption == COURSE_ADD) {
 							addCourse(courseList, inputCourse());
-						} else if (functionOption == 2) {
+						} else if (functionOption == COURSE_DELETE) {
 							deleteCourse(courseList);
-						} else if (functionOption == 3) {
+						} else if (functionOption == COURSE_VIEW) {
 							viewAllCourse(courseList);
 						}
 
@@ -312,8 +320,7 @@ public class C206_CaseStudy {
 		}
 	}
 
-	// ================================= View items
-	// =================================
+	// ================================= View items =================================
 	public static String retrieveAllEnrolment(ArrayList<Enrolment> EnrolmentList) {
 		String output = "";
 		for (int i = 0; i < EnrolmentList.size(); i++) {
@@ -342,7 +349,7 @@ public class C206_CaseStudy {
 
 	}
 
-	public static String retrieveAllCourse(ArrayList<Course> courseList) {
+	public static String retrieveAllCourse(ArrayList<Course> courseList) {//Norhilman
 		String result = "Course List\n";
 		String format = "%-5s %-15s %-20s %-30s\n";
 		result += String.format(format, "ID", "Title", "Instructor", "Schedule");
@@ -355,7 +362,7 @@ public class C206_CaseStudy {
 		return result;
 	}
 
-	public static void viewAllCourse(ArrayList<Course> courseList) {
+	public static void viewAllCourse(ArrayList<Course> courseList) { //Norhilman
 		System.out.println("Course List");
 		String format = "%-5s %-15s %-20s %-30s\n";
 		System.out.printf(format, "ID", "Title", "Instructor", "Schedule");
@@ -409,7 +416,7 @@ public class C206_CaseStudy {
 		System.out.println("Fee added successfully.");
 	}
 
-	public static Course inputCourse() {
+	public static Course inputCourse() { //Norhilman
 		String id = Helper.readString("Enter Course ID: ");
 		String title = Helper.readString("Enter Course Title: ");
 		String instructor = Helper.readString("Enter Instructor Name: ");
@@ -419,21 +426,23 @@ public class C206_CaseStudy {
 		return newCourse;
 	}
 
-	public static void addCourse(ArrayList<Course> courseList, Course course) {
+	public static void addCourse(ArrayList<Course> courseList, Course course) { //Norhilman
 		String courseCode = course.getCourseCode();
 		String title = course.getTitle();
 
 		// Check for duplicate course code
-		for (Course existingCourse : courseList) {
-			if (existingCourse.getCourseCode().equalsIgnoreCase(courseCode)) {
+		for (Course existingCourse : courseList) {//Norhilman
+			String courseCode2 = existingCourse.getCourseCode();
+			if (courseCode2.equalsIgnoreCase(courseCode)) {
 				System.out.println("Error: Duplicate course code. Course cannot be added.");
 				return;
 			}
 		}
 
 		// Check for duplicate title
-		for (Course existingCourse : courseList) {
-			if (existingCourse.getTitle().equalsIgnoreCase(title)) {
+		for (Course existingCourse : courseList) {//Norhilman
+			String title2 = existingCourse.getTitle();
+			if (title2.equalsIgnoreCase(title)) {
 				System.out.println("Error: Duplicate course title. Course cannot be added.");
 				return;
 			}
@@ -468,14 +477,15 @@ public class C206_CaseStudy {
 		}
 	}
 
-	public static void deleteCourse(ArrayList<Course> courseList) {
+	public static void deleteCourse(ArrayList<Course> courseList) { //Norhilman
 		viewAllCourse(courseList);
 
 		String courseCodeToDelete = Helper.readString("Enter the code of the course to delete: ");
 
 		boolean found = false;
 		for (Course course : courseList) {
-			if (course.getCourseCode().equalsIgnoreCase(courseCodeToDelete)) {
+			String courseCode = course.getCourseCode();
+			if (courseCode.equalsIgnoreCase(courseCodeToDelete)) {
 				courseList.remove(course);
 				System.out.println("Course deleted successfully.");
 				found = true;
