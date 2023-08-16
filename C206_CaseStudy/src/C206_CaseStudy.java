@@ -465,15 +465,30 @@ private static final int STUDENT_VIEW=3;
 		}
 	}
 
-	public static void addStudent(ArrayList<Student> StudentList) {
-		String name = Helper.readString("enter your name: ");
-		String dob = Helper.readString("Enter your date of birth: ");
-		String nric = Helper.readString("Enter your nric number: ");
-		String course = Helper.readString("Enter your desired course: ");
-		int contact = Helper.readInt("Enter your contact number: ");
-		StudentList.add(new Student(name, dob, nric, course, contact));
-		System.out.println("Student has been added");
-	}
+	
+		public static void addStudent(ArrayList<Student> StudentList) { //22003801 Jayanth
+			String name = Helper.readString("enter your name: ");
+			String dob = Helper.readString("Enter your date of birth: ");
+			String nric = Helper.readString("Enter your nric number: ");
+			String course = Helper.readString("Enter your desired course: ");
+			int contact = Helper.readInt("Enter your contact number: ");
+			boolean studentExists = false;
+		    for (Student student : StudentList) {
+		        if (student.getNric().equalsIgnoreCase(nric)) {
+		            studentExists = true;
+		            break; // Exit the loop once a matching NRIC is found
+		        }
+		    }
+
+	 
+
+		    if (studentExists) {
+		        System.out.println("Student already exists.");
+		    } else {
+		        StudentList.add(new Student(name, dob, nric, course, contact));
+		        System.out.println("Student has been added.");
+		    }
+		}
 
 	// ================================= Deleting =================================
 	//22030683 Hakim

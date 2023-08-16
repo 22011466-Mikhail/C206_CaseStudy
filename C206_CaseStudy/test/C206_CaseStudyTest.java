@@ -266,22 +266,40 @@ public class C206_CaseStudyTest {
         C206_CaseStudy.deleteFee(feeList, 0);
         assertEquals("Test that feeList size is 0 after deleting", 0, feeList.size());
     }
+    
     @Test
-    public void testdeleteStudent() { // Jayanth
+    public void testdeleteStudent() {    //22003801 Jayanth
     	//Add student to StudentList 
-    	 StudentList.add(new Student("Bryan","2001-06-30","N4567","English",82567898));
-         StudentList.add(new Student("Cedric","2001-07-31","N8712","English",82567893));
-         nrictodelete="N8712";
-         
+    	StudentList.add(new Student("Bryan","2001-06-30","N4567","English",82567898));
+        StudentList.add(new Student("Cedric","2001-07-31","N8712","English",82567893));
+
+         String nrictodelete = "N8712";
 
          // Delete an existing student
          C206_CaseStudy.deleteStudent(StudentList,nrictodelete);
          assertEquals( "Test that StudentList size is 1 after deleting",1,StudentList.size());
-         
+
          // Delete a non existing student
-         
+         String nonExistingNric = "N1234"; // Assuming "N1234" does not exist in the student list
+         C206_CaseStudy.deleteStudent(StudentList, nonExistingNric);
+         assertEquals("Test that StudentList size remains 1 after attempting to delete a non-existing student", 1, StudentList.size());
      }
     
+    @Test
+  public void testaddStudent() {//22003801-Jayanth
+  	 Student newStudent = new Student("Ahamed", "2000-02-127", "M8611", "Math", 88765678);
+       StudentList.add(newStudent);
+
+       // Add a new student - Normal
+
+       C206_CaseStudy.addStudent(StudentList);
+
+       assertEquals("Test that StudentList size is 1 after adding a student", 2, StudentList.size());
+       //Add an existing student-error
+       C206_CaseStudy.addStudent(StudentList);
+
+        assertEquals("Test that studentList size remains one after an existing student is added,",2,StudentList.size());
+    }
 
 	@After
 	public void tearDown() throws Exception {
