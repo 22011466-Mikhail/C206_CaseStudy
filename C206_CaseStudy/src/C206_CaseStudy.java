@@ -6,6 +6,9 @@ private static final int COURSE_VIEW = 3;
 private static final int COURSE_DELETE = 2;
 private static final int COURSE_ADD = 1;
 private static final int COURSE = 1;
+private static final int STUDENT_ADD =1;
+private static final int STUDENT_DELETE=2;
+private static final int STUDENT_VIEW=3;
 
 //yc
 //jayanth
@@ -20,6 +23,7 @@ private static final int COURSE = 1;
 		ArrayList<Course> courseList = new ArrayList<Course>();
 		ArrayList<Enrolment> EnrolmentList = new ArrayList<Enrolment>();
 		ArrayList<Student> StudentList = new ArrayList<Student>();
+		
 		
 		feeList.add(new Fee("Tuition Fee", 1000.0, "2023-09-01"));
 
@@ -84,11 +88,12 @@ private static final int COURSE = 1;
 						studentMenu();
 						functionOption = Helper.readInt("Insert option > ");
 
-						if (functionOption == 1) {
+						if (functionOption == STUDENT_ADD) {
 							addStudent(StudentList);
-						} else if (functionOption == 2) {
-							deleteStudent(StudentList);
-						} else if (functionOption == 3) {
+						} else if (functionOption == STUDENT_DELETE) {
+							String nrictodelete=Helper.readString("enter nric number to be deleted");
+							deleteStudent(StudentList,nrictodelete);
+						} else if (functionOption == STUDENT_VIEW) {
 							viewStudentList(StudentList);
 						}
 					}
@@ -498,24 +503,27 @@ private static final int COURSE = 1;
 		}
 	}
 
-	public static void deleteStudent(ArrayList<Student> StudentList) {
+	public static void deleteStudent(ArrayList<Student> StudentList,String nrictodelete) {
 		viewStudentList(StudentList);
-		String nrictodelete = Helper.readString("Enter the nric number to be deleted: ");
+		boolean found = false;
 		for (Student student : StudentList) {
 			if (student.getNric().equalsIgnoreCase(nrictodelete)) {
 				StudentList.remove(student);
 
 				System.out.println("Student has been successfully deleted");
-
-			} else {
+				found =  true;
+				break;
+			} 
+		}viewStudentList(StudentList);
+			if (!found) {
 				System.out.println("Student not found");
-				viewStudentList(StudentList);
 
 			}
+			
 
 		}
 
-	}
+	
 
 	public static void deleteEnrolment(ArrayList<Enrolment> EnrolmentList) {
 		String ask_id = Helper.readString("Enter Course ID >");
