@@ -63,7 +63,7 @@ private static final int COURSE = 1;
 				menu();
 				
 				
-				option = Helper.readInt("Insert menu option > ");
+				option = Helper.readInt("Insert menu option > ");// 22024343 Norhilman
 				if (option == COURSE) { // ----- COURSE FUNCTION ------
 					while (functionOption != COURSE_EXIT) {
 						courseMenu();
@@ -349,7 +349,7 @@ private static final int COURSE = 1;
 
 	}
 
-	public static String retrieveAllCourse(ArrayList<Course> courseList) {//Norhilman
+	public static String retrieveAllCourse(ArrayList<Course> courseList) {//22024343 Norhilman
 		String result = "Course List\n";
 		String format = "%-5s %-15s %-20s %-30s\n";
 		result += String.format(format, "ID", "Title", "Instructor", "Schedule");
@@ -362,7 +362,7 @@ private static final int COURSE = 1;
 		return result;
 	}
 
-	public static void viewAllCourse(ArrayList<Course> courseList) { //Norhilman
+	public static void viewAllCourse(ArrayList<Course> courseList) { //22024343 Norhilman
 		System.out.println("Course List");
 		String format = "%-5s %-15s %-20s %-30s\n";
 		System.out.printf(format, "ID", "Title", "Instructor", "Schedule");
@@ -416,7 +416,7 @@ private static final int COURSE = 1;
 		System.out.println("Fee added successfully.");
 	}
 
-	public static Course inputCourse() { //Norhilman
+	public static Course inputCourse() { //22024343 Norhilman
 		String id = Helper.readString("Enter Course ID: ");
 		String title = Helper.readString("Enter Course Title: ");
 		String instructor = Helper.readString("Enter Instructor Name: ");
@@ -426,12 +426,12 @@ private static final int COURSE = 1;
 		return newCourse;
 	}
 
-	public static void addCourse(ArrayList<Course> courseList, Course course) { //Norhilman
+	public static void addCourse(ArrayList<Course> courseList, Course course) { //22024343 Norhilman
 		String courseCode = course.getCourseCode();
 		String title = course.getTitle();
 
 		// Check for duplicate course code
-		for (Course existingCourse : courseList) {//Norhilman
+		for (Course existingCourse : courseList) {//22024343 Norhilman
 			String courseCode2 = existingCourse.getCourseCode();
 			if (courseCode2.equalsIgnoreCase(courseCode)) {
 				System.out.println("Error: Duplicate course code. Course cannot be added.");
@@ -440,7 +440,7 @@ private static final int COURSE = 1;
 		}
 
 		// Check for duplicate title
-		for (Course existingCourse : courseList) {//Norhilman
+		for (Course existingCourse : courseList) {//22024343 Norhilman
 			String title2 = existingCourse.getTitle();
 			if (title2.equalsIgnoreCase(title)) {
 				System.out.println("Error: Duplicate course title. Course cannot be added.");
@@ -477,7 +477,7 @@ private static final int COURSE = 1;
 		}
 	}
 
-	public static void deleteCourse(ArrayList<Course> courseList) { //Norhilman
+	public static void deleteCourse(ArrayList<Course> courseList) { //22024343 Norhilman
 		viewAllCourse(courseList);
 
 		String courseCodeToDelete = Helper.readString("Enter the code of the course to delete: ");

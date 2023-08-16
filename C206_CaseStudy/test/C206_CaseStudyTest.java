@@ -38,7 +38,7 @@ public class C206_CaseStudyTest {
 		courseList = new ArrayList<Course>();
 	}
 	@Test
-	public void testAddCourse() {
+	public void testAddCourse() {//22024343 Norhilman
 
 		// Test if courseList is not null and empty
 		assertNotNull("Test if there is a valid courseList to add to", courseList);
@@ -62,7 +62,7 @@ public class C206_CaseStudyTest {
 	}
 
 	@Test
-	public void testViewCourse() {
+	public void testViewCourse() {//22024343 Norhilman
 		
 		// Test if courseList is not null and empty
 				assertNotNull("Test if there is a valid courseList to add to", courseList);
@@ -86,7 +86,7 @@ public class C206_CaseStudyTest {
 				
 	}
 	@Test
-	public void testDeleteCourse() {
+	public void testDeleteCourse() {//22024343 Norhilman
 		// Add courses to courseList
 		courseList.add(C01);
 		courseList.add(C02);
