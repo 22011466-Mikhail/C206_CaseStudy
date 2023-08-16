@@ -50,7 +50,7 @@ private static final int STUDENT_VIEW=3;
 		int functionOption = 0;
 		User loginUser = null;
 
-		while (option	 != QUIT) {
+		while (option	 != QUIT) { // ----------------User------------ - Mikhail
 			loginMenu();
 			option = Helper.readInt("Insert menu option > ");
 			if (option == LOGIN) {
@@ -134,7 +134,7 @@ private static final int STUDENT_VIEW=3;
 							viewAllEnrolment(EnrolmentList);
 						}
 					}
-				} else if (option == USER) { // ----USER FUNCTION-----
+				} else if (option == USER) { // ----USER FUNCTION----- // ----------------User------------ - Mikhail
 					while (functionOption != USER_QUIT) {
 						userMenu();
 						functionOption = Helper.readInt("Insert option > ");
@@ -171,14 +171,14 @@ private static final int STUDENT_VIEW=3;
 
 	// ---------MAIN MENUS----------
 
-	public static void loginMenu() {
+	public static void loginMenu() { // ----------------Menu------------ - Mikhail
 		setHeader("LOGIN MENU");
 		System.out.println("1. Login as user");
 		System.out.println("2. Quit");
 		Helper.line(80, "-");
 	}
 
-	public static void menu() {
+	public static void menu() { // ----------------Menu------------ - Mikhail
 		setHeader("MAIN MENU");
 		System.out.println("1. Courses");
 		System.out.println("2. Students");
@@ -189,7 +189,7 @@ private static final int STUDENT_VIEW=3;
 		Helper.line(80, "-");
 	}
 
-	public static void userMenu() {
+	public static void userMenu() { // ----------------Menu------------ - Mikhail
 		setHeader("USER MENU");
 		System.out.println("1. Add User");
 		System.out.println("2. Remove User");
@@ -234,7 +234,7 @@ private static final int STUDENT_VIEW=3;
 		Helper.line(80, "-");
 	}
 
-	public static User loginToUser(ArrayList<User> userList, String username, String password) {
+	public static User loginToUser(ArrayList<User> userList, String username, String password) { // ----------------User------------ - Mikhail
 
 		boolean userFound = false;
 		User userLogin = null;
