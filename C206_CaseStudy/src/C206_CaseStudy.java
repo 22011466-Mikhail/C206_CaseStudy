@@ -522,26 +522,25 @@ private static final int STUDENT_VIEW=3;
 		}
 	}
 
-	public static void deleteStudent(ArrayList<Student> StudentList,String nrictodelete) { //Jayanth
-		viewStudentList(StudentList);
-		boolean found = false;
-		for (Student student : StudentList) {
-			if (student.getNric().equalsIgnoreCase(nrictodelete)) {
-				StudentList.remove(student);
+	
+		public static void deleteStudent(ArrayList<Student> StudentList,String nrictodelete) {//22003801 Jayanth
+			viewStudentList(StudentList);
+			boolean found = false;
+			for (Student student : StudentList) {
+				if (student.getNric().equalsIgnoreCase(nrictodelete)) {
+					StudentList.remove(student);
 
-				System.out.println("Student has been successfully deleted");
-				found =  true;
-				break;
-			} 
-		}viewStudentList(StudentList);
-			if (!found) {
-				System.out.println("Student not found");
+					System.out.println("Student has been successfully deleted");
+					found =  true;
+					break;
+				} 
+			}viewStudentList(StudentList);
+				if (!found) {
+					System.out.println("Student not found");
+
+				}
 
 			}
-			
-
-		}
-
 	
 
 	public static void deleteEnrolment(ArrayList<Enrolment> EnrolmentList) { //Yong Chuan
