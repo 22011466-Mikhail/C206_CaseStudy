@@ -252,7 +252,9 @@ private static final int STUDENT_VIEW=3;
 		String output = "";
 		for (int i = 0; i < userList.size(); i++) {
 
-			output += String.format("%-20s %-20s\n", userList.get(i).getUsername(), userList.get(i).getPassword());
+			String username = userList.get(i).getUsername();
+			String password = userList.get(i).getPassword();
+			output += String.format("%-20s %-20s\n", username, password);
 		}
 		return output;
 	}
@@ -277,12 +279,16 @@ private static final int STUDENT_VIEW=3;
 	// ----------------User------------ - Mikhail
 	public static void addUser(ArrayList<User> userList, User user1) {
 		User userTest;
+		String username = user1.getUsername();
+		String password = user1.getPassword();
 		for (int i = 0; i < userList.size(); i++) {
 			userTest = userList.get(i);
-			if (userTest.getUsername().equalsIgnoreCase(user1.getUsername()))
+			String testUsername = userTest.getUsername();
+			if (testUsername.equalsIgnoreCase(username))
 				return;
 		}
-		if ((user1.getUsername().isEmpty()) || (user1.getPassword().isEmpty()) ) {
+		
+		if ((username.isEmpty()) || (password.isEmpty()) ) {
 			return;
 		}
 		userList.add(user1);
@@ -294,10 +300,11 @@ private static final int STUDENT_VIEW=3;
 		boolean userFound = false;
 		String option = "";
 		
-				for (User user1 : userList) {
-			if (user1.getUsername().equals(username)) {
+		for (User user1 : userList) {
+			String username2 = user1.getUsername();
+			if (username2.equals(username)) {
 				while(!option.equalsIgnoreCase("yes")) {
-					option = Helper.readString("Are you sure you want to delete " + user1.getUsername() + "? (Yes/No) > ");					
+					option = Helper.readString("Are you sure you want to delete " + username2 + "? (Yes/No) > ");					
 					if(option.equalsIgnoreCase("no")) {
 						return deleteUser;
 					} else if (option.equalsIgnoreCase("yes")) {

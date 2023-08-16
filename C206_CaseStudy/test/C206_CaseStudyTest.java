@@ -69,7 +69,7 @@ public class C206_CaseStudyTest {
 		// Add a course that has missing detail
 		User user3_missing = new User("user3","");
 		C206_CaseStudy.addUser(userList, user3_missing);
-		assertEquals("Test that the Course arraylist size is unchanged.", 1, userList.size());
+		assertEquals("Test that the User arraylist size is unchanged.", 1, userList.size());
 
 
 	}
