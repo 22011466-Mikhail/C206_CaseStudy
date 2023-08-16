@@ -1,6 +1,13 @@
 import java.util.ArrayList;
 
 public class C206_CaseStudy {
+private static final int USER = 5;
+private static final int USER_QUIT = 4;
+private static final int QUIT = 2;
+private static final int LOGIN = 1;
+private static final int USER_VIEW = 3;
+private static final int USER_DELETE = 2;
+private static final int USER_ADD = 1;
 private static final int COURSE_EXIT = 4;
 private static final int COURSE_VIEW = 3;
 private static final int COURSE_DELETE = 2;
@@ -43,10 +50,10 @@ private static final int STUDENT_VIEW=3;
 		int functionOption = 0;
 		User loginUser = null;
 
-		while (option	 != 2) {
+		while (option	 != QUIT) {
 			loginMenu();
 			option = Helper.readInt("Insert menu option > ");
-			if (option == 1) {
+			if (option == LOGIN) {
 				String username = Helper.readString("Username > ");
 				String password = Helper.readString("Password > ");
 				loginUser = loginToUser(userList, username, password);
@@ -127,16 +134,16 @@ private static final int STUDENT_VIEW=3;
 							viewAllEnrolment(EnrolmentList);
 						}
 					}
-				} else if (option == 5) { // ----USER FUNCTION-----
-					while (functionOption != 4) {
+				} else if (option == USER) { // ----USER FUNCTION-----
+					while (functionOption != USER_QUIT) {
 						userMenu();
 						functionOption = Helper.readInt("Insert option > ");
 
-						if (functionOption == 1) {
+						if (functionOption == USER_ADD) {
 							addUser(userList, inputUser());
-						} else if (functionOption == 2) {
+						} else if (functionOption == USER_DELETE) {
 							deleteUser(userList,findDeleteUser(userList));
-						} else if (functionOption == 3) {
+						} else if (functionOption == USER_VIEW) {
 							viewUser(userList);
 						}
 					}
@@ -233,7 +240,9 @@ private static final int STUDENT_VIEW=3;
 		User userLogin = null;
 
 		for (User user1 : userList) {
-			if (user1.getUsername().equals(username) && user1.getPassword().equals(password)) {
+			String username2 = user1.getUsername();
+			String password2 = user1.getPassword();
+			if (username2.equals(username) && password2.equals(password)) {
 				userLogin = user1;
 				userFound = true;
 			}
