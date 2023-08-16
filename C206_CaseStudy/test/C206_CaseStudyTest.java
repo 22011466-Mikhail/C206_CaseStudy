@@ -12,6 +12,8 @@ public class C206_CaseStudyTest {
 	private Enrolment en2;
 	private Course C01;
 	private Course C02;
+	private User user1;
+	private User user2;
 
 	private ArrayList<Enrolment> EnrolmentList;
 	//22030683 Hakim
@@ -20,6 +22,9 @@ public class C206_CaseStudyTest {
 	private ArrayList<Course> courseList;
 	
 	private ArrayList<Student> StudentList;
+	
+	private ArrayList<User> userList;
+	
 	String nrictodelete=null;
 
 	public C206_CaseStudyTest() {
@@ -36,10 +41,83 @@ public class C206_CaseStudyTest {
 		C02 = new Course("C02", "English", "Alice Lum", "Every Sunday at 7.00pm to 9.00pm");
 		en1 = new Enrolment ("C01");
 		en2 = new Enrolment("C02");
+		user1 = new User("user1","password1");
+		user2 = new User("user2","password2");
 		
+		userList = new ArrayList<User>();
 		EnrolmentList = new ArrayList<Enrolment>();
 		courseList = new ArrayList<Course>();
 	}
+	
+	// --------------Mikhail------------
+	@Test
+	public void testAddUser() {
+
+		// Test if courseList is not null and empty
+		assertNotNull("Test if there is a valid userList to add to", userList);
+		
+
+		// Add a course and verify
+		C206_CaseStudy.addUser(userList, user1);
+		assertEquals("Test that the userList size is 1.", 1, userList.size());
+		assertSame("Test that the added user is the same as the first user in the list", user1, userList.get(0));
+		
+		// Add a course that already exists in the list
+		C206_CaseStudy.addUser(userList, user1);
+		assertEquals("Test that the User arraylist size is unchanged.", 1, userList.size());
+
+		// Add a course that has missing detail
+		User user3_missing = new User("user3","");
+		C206_CaseStudy.addUser(userList, user3_missing);
+		assertEquals("Test that the Course arraylist size is unchanged.", 1, userList.size());
+
+
+	}
+
+	// --------------Mikhail------------
+	@Test
+	public void testViewUser() {
+		
+		// Test if courseList is not null and empty
+				assertNotNull("Test if there is a valid userList to add to", userList);
+				assertEquals("Test that the userList is empty.", 0, userList.size());
+
+		// Given an empty list, after adding 2 courses, test if the size of the list is
+		// 2 - normal
+		C206_CaseStudy.addUser(userList, user1);
+		C206_CaseStudy.addUser(userList, user2);
+		assertEquals("Test that user list size is 2", 2, userList.size());
+
+		//test if the expected output string same as the list of courses retrieved 
+				
+				String allUsers = C206_CaseStudy.viewUser(userList);
+				String testOutput = "";
+				testOutput = String.format("%-20s %-20s\n", "USERNAME", "PASSWORD");
+				testOutput += String.format("%-20s %-20s\n","user1", "password1");
+				testOutput += String.format("%-20s %-20s\n","user2", "password2");
+				
+				assertEquals("Test that ViewAllUsers list displays correctly", testOutput, allUsers);
+				
+	}
+	
+	// --------------Mikhail------------
+	@Test
+	public void testDeleteUser() {
+		// Add courses to courseList
+		C206_CaseStudy.addUser(userList, user1);
+		C206_CaseStudy.addUser(userList, user2);
+		// Test if courseList is not null and empty - boundary
+	    assertNotNull("Test if there is valid userList for deletion", userList);
+
+
+		// Delete a course
+		C206_CaseStudy.deleteUser(userList, user1);
+		assertEquals("Test that the userList size is reduced after deletion.", 1, userList.size());
+
+		// Verify the remaining course
+		assertSame("Test that the remaining course is the second course in the list", user2, userList.get(0));
+	}
+	
 	@Test
 	public void testAddCourse() {//22024343 Norhilman
 
@@ -106,7 +184,7 @@ public class C206_CaseStudyTest {
 
 	}
 	@Test 
-	public void testAddEnrolment() {
+	public void testAddEnrolment() { //Yong Chuan
 		//Test whether the list is empty or not
 		assertNotNull("Test if there is valid Enrolment arraylist to add to", EnrolmentList);
 		assertEquals("Test that the Enrolment arraylist is empty.", 0, EnrolmentList.size());
@@ -123,7 +201,7 @@ public class C206_CaseStudyTest {
     }
 
 	@Test
-	public void testRetrieveAllEnrolment() {
+	public void testRetrieveAllEnrolment() { //Yong Chuan
 		//fail("Not yet implemented");
 		// write your code here
 		assertNotNull("Test if there is valid Enrolment arraylist to add to", EnrolmentList);
@@ -136,7 +214,7 @@ public class C206_CaseStudyTest {
 		
 	}
 	@Test
-	public void testDeleteEnrolment() {
+	public void testDeleteEnrolment() { //Yong Chuan
         // Add enrolment to EnrolmentList
 	   EnrolmentList.add(new Enrolment("C01"));
        
@@ -151,8 +229,7 @@ public class C206_CaseStudyTest {
         assertEquals("Test that EnrolmentList size is 0 after deleting",0, EnrolmentList.size());
     }
 	@Test
-	//22030683 Hakim
-    public void testAddFee() {
+    public void testAddFee() { //22030683 Hakim
         // Test that feeList is initially empty
         assertEquals("Test that feeList is empty", 0, feeList.size());
 
@@ -166,8 +243,7 @@ public class C206_CaseStudyTest {
         
     }
 	@Test
-	//22030683 Hakim
-	public void testViewAllFees() {
+	public void testViewAllFees() { //22030683 Hakim
 	    // After adding 1 fee, test that size of list is 1 - normal
 	    feeList.add(new Fee("Tuition Fee", 1000.0, "2023-09-01"));
 	    assertEquals("Test that the size of list is 1", 1, feeList.size());
@@ -177,8 +253,7 @@ public class C206_CaseStudyTest {
 		
 
     @Test
-  //22030683 Hakim
-    public void testDeleteFee() {
+    public void testDeleteFee() {  //22030683 Hakim
         // Add fees to feeList
         feeList.add(new Fee("Tuition Fee", 1000.0, "2023-09-01"));
         feeList.add(new Fee("Exam Fee", 500.0, "2023-10-01"));
@@ -192,7 +267,7 @@ public class C206_CaseStudyTest {
         assertEquals("Test that feeList size is 0 after deleting", 0, feeList.size());
     }
     @Test
-    public void testdeleteStudent() {
+    public void testdeleteStudent() { // Jayanth
     	//Add student to StudentList 
     	 StudentList.add(new Student("Bryan","2001-06-30","N4567","English",82567898));
          StudentList.add(new Student("Cedric","2001-07-31","N8712","English",82567893));

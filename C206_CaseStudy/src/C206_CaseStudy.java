@@ -27,9 +27,9 @@ private static final int STUDENT_VIEW=3;
 		feeList.add(new Fee("Tuition Fee", 1000.0, "2023-09-01"));
 
 		// addition of sample objects to arraylists
-		userList.add(new User("user1", "password1", "student"));
-		userList.add(new User("user2", "password2", "teacher"));
-		userList.add(new User("user3", "password3", "admin"));
+		userList.add(new User("user1", "password1"));
+		userList.add(new User("user2", "password2"));
+		userList.add(new User("user3", "password3"));
 
 		StudentList.add(new Student("Adil", "2003-08-25", "M7654", "Mathematics", 83435469));
 		StudentList.add(new Student("Abraham", "2003-09-27", "M7684", "Mathematics", 83435423));
@@ -53,7 +53,6 @@ private static final int STUDENT_VIEW=3;
 				if (loginUser != null) {
 					System.out.println("Login successful");
 					System.out.println("User: " + loginUser.getUsername());
-					System.out.println("Role: " + loginUser.getRole());
 					break;
 				} else {
 					System.out.println("Username / password is wrong");
@@ -136,7 +135,7 @@ private static final int STUDENT_VIEW=3;
 						if (functionOption == 1) {
 							addUser(userList, inputUser());
 						} else if (functionOption == 2) {
-							removeUser(userList);
+							deleteUser(userList,findDeleteUser(userList));
 						} else if (functionOption == 3) {
 							viewUser(userList);
 						}
@@ -145,15 +144,6 @@ private static final int STUDENT_VIEW=3;
 			}
 		}
 	}
-	/*
-	 * public static void menu() { System.out.println("TUITION CENTRE APP");
-	 * Helper.line(80, "-"); System.out.println("1. Administrator");
-	 * System.out.println("2. Teacher"); System.out.println("3. Student");
-	 * System.out.println("4. Exit"); Helper.line(80, "-");
-	 * 
-	 * }
-	 * 
-	 */
 
 	public static void setHeader(String header) {
 		Helper.line(80, "-");
@@ -262,28 +252,29 @@ private static final int STUDENT_VIEW=3;
 		String output = "";
 		for (int i = 0; i < userList.size(); i++) {
 
-			output += String.format("%-20s %-20s %-20s\n", userList.get(i).getUsername(), userList.get(i).getPassword(),
-					userList.get(i).getRole());
+			output += String.format("%-20s %-20s\n", userList.get(i).getUsername(), userList.get(i).getPassword());
 		}
 		return output;
 	}
 
-	public static void viewUser(ArrayList<User> userList) {
+	// ----------------User------------ - Mikhail
+	public static String viewUser(ArrayList<User> userList) {
 		setHeader("USER LIST");
-		String output = String.format("%-20s %-20s %-20s\n", "USERNAME", "PASSWORD", "ROLE");
+		String output = String.format("%-20s %-20s\n", "USERNAME", "PASSWORD");
 		output += retrieveAllUsers(userList);
 		System.out.println(output);
+		
+		return output;
 	}
-
+	// ----------------User------------ - Mikhail
 	public static User inputUser() {
 		String username = Helper.readString("Enter username > ");
 		String password = Helper.readString("Enter password > ");
-		String role = Helper.readString("Enter role > ");
 
-		User user = new User(username, password, role);
+		User user = new User(username, password);
 		return user;
 	}
-
+	// ----------------User------------ - Mikhail
 	public static void addUser(ArrayList<User> userList, User user1) {
 		User userTest;
 		for (int i = 0; i < userList.size(); i++) {
@@ -291,41 +282,54 @@ private static final int STUDENT_VIEW=3;
 			if (userTest.getUsername().equalsIgnoreCase(user1.getUsername()))
 				return;
 		}
-		if ((user1.getUsername().isEmpty()) || (user1.getPassword().isEmpty()) || (user1.getRole().isEmpty())) {
+		if ((user1.getUsername().isEmpty()) || (user1.getPassword().isEmpty()) ) {
 			return;
 		}
 		userList.add(user1);
 	}
-
-	public static void removeUser(ArrayList<User> userList) {
+	// ----------------User------------ - Mikhail
+	public static User findDeleteUser(ArrayList<User> userList) {
 		String username = Helper.readString("Enter username of account to delete > ");
 		User deleteUser = null;
 		boolean userFound = false;
 		String option = "";
-
-		for (User user1 : userList) {
+		
+				for (User user1 : userList) {
 			if (user1.getUsername().equals(username)) {
-				option = Helper.readString("Are you sure you want to delete " + user1.getUsername() + "? > ");
-				userFound = true;
-				deleteUser = user1;
-				break;
+				while(!option.equalsIgnoreCase("yes")) {
+					option = Helper.readString("Are you sure you want to delete " + user1.getUsername() + "? (Yes/No) > ");					
+					if(option.equalsIgnoreCase("no")) {
+						return deleteUser;
+					} else if (option.equalsIgnoreCase("yes")) {
+						userFound = true;
+						deleteUser = user1;
+					}
+					System.out.println("Invalid input (Yes/No)?");
+
+				}
+
 			}
 		}
-
-		if (userFound == false) {
+		if(userFound == false) {
 			System.out.println("Account not found");
 		} else if (option.equalsIgnoreCase("no")) {
-			return;
+			return deleteUser;
 		} else if (option.equalsIgnoreCase("yes") && userFound == true) {
-			userList.remove(deleteUser);
 			System.out.println("Account has been deleted.");
 		} else {
 			System.out.println("Error with input");
 		}
+		return deleteUser;
+	}
+	// ----------------User------------ - Mikhail
+	public static void deleteUser(ArrayList<User> userList, User user) {
+		
+		userList.remove(user);
+
 	}
 
 	// ================================= View items =================================
-	public static String retrieveAllEnrolment(ArrayList<Enrolment> EnrolmentList) {
+	public static String retrieveAllEnrolment(ArrayList<Enrolment> EnrolmentList) { // Yong Chuan
 		String output = "";
 		for (int i = 0; i < EnrolmentList.size(); i++) {
 				boolean isAvailable = EnrolmentList.get(i).getIsAvailable();
@@ -336,14 +340,14 @@ private static final int STUDENT_VIEW=3;
 		return output;
 	}
 
-	public static void viewAllEnrolment(ArrayList<Enrolment> EnrolmentList) {
+	public static void viewAllEnrolment(ArrayList<Enrolment> EnrolmentList) { // Yong Chuan
 		C206_CaseStudy.setHeader("ENROLMENT LIST");
 		String output = String.format("%-15s %10s %-10s\n", "ENROLMENT ID", "COURSE ID", "AVAIBILITY");
 		output += retrieveAllEnrolment(EnrolmentList);
 		System.out.println(output);
 	}
-	//22030683 Hakim
-	public static void viewAllFees(ArrayList<Fee> feeList) {
+	
+	public static void viewAllFees(ArrayList<Fee> feeList) { //22030683 Hakim
 		System.out.println(String.format("%-20s %-10s %-15s", "FEE TYPE", "AMOUNT", "DUE DATE"));
 
 		for (Fee fee : feeList) {
@@ -381,7 +385,7 @@ private static final int STUDENT_VIEW=3;
 
 
 	
-	public static void viewStudentList(ArrayList<Student> StudentList) {
+	public static void viewStudentList(ArrayList<Student> StudentList) { //Jayanth
 		System.out.println("Student List");
 		String format = "%-15s %-15s %-10s %-30s %-15s\n";
 		System.out.printf(format, "Name", "DOB", "NRIC", "Course", "Contact Number");
@@ -394,7 +398,7 @@ private static final int STUDENT_VIEW=3;
 
 	// ================================= Adding =================================
 
-	public static void addEnrolment(ArrayList<Enrolment> EnrolmentList ,Enrolment en) {
+	public static void addEnrolment(ArrayList<Enrolment> EnrolmentList ,Enrolment en) { //Yong Chuan
 		String id = Helper.readString("Enter Course ID: ");
 		boolean found = false;
 		
@@ -413,8 +417,8 @@ private static final int STUDENT_VIEW=3;
 		}
 	}
 
-	//22030683 Hakim
-	public static void addFee(ArrayList<Fee> feeList, String feeType, double amount, String dueDate) {
+	
+	public static void addFee(ArrayList<Fee> feeList, String feeType, double amount, String dueDate) { //22030683 Hakim
 		Fee newFee = new Fee(feeType, amount, dueDate);
 		feeList.add(newFee);
 		System.out.println("Fee added successfully.");
@@ -503,7 +507,7 @@ private static final int STUDENT_VIEW=3;
 		}
 	}
 
-	public static void deleteStudent(ArrayList<Student> StudentList,String nrictodelete) {
+	public static void deleteStudent(ArrayList<Student> StudentList,String nrictodelete) { //Jayanth
 		viewStudentList(StudentList);
 		boolean found = false;
 		for (Student student : StudentList) {
@@ -525,7 +529,7 @@ private static final int STUDENT_VIEW=3;
 
 	
 
-	public static void deleteEnrolment(ArrayList<Enrolment> EnrolmentList) {
+	public static void deleteEnrolment(ArrayList<Enrolment> EnrolmentList) { //Yong Chuan
 		String ask_id = Helper.readString("Enter Course ID >");
 		boolean found = false;
 		for (Enrolment en : EnrolmentList) {
