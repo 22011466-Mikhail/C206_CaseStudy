@@ -34,7 +34,7 @@ public class C206_CaseStudy {
 		int functionOption = 0;
 		User loginUser = null;
 
-		while (option != 2) {
+		while (option	 != 2) {
 			loginMenu();
 			option = Helper.readInt("Insert menu option > ");
 			if (option == 1) {
