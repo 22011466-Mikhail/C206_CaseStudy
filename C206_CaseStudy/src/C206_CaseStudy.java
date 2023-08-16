@@ -12,7 +12,6 @@ private static final int STUDENT_VIEW=3;
 
 //yc
 //jayanth
-//hakim
 //Norhilman
 
 	public static void main(String[] args) {
@@ -98,7 +97,7 @@ private static final int STUDENT_VIEW=3;
 						}
 					}
 
-				} else if (option == 3) { // ---- FEE FUNCTION-----
+				} else if (option == 3) { // ---- FEE FUNCTION-----// 22030683 Hakim
 					while (functionOption != 4) {
 						feeMenu();
 						functionOption = Helper.readInt("Insert option > ");
@@ -219,7 +218,7 @@ private static final int STUDENT_VIEW=3;
 		System.out.println("4. Quit");
 		Helper.line(80, "-");
 	}
-
+	// 22030683 Hakim
 	public static void feeMenu() {
 		setHeader("FEE MENU");
 		System.out.println("1. Add Fee");
@@ -343,7 +342,7 @@ private static final int STUDENT_VIEW=3;
 		output += retrieveAllEnrolment(EnrolmentList);
 		System.out.println(output);
 	}
-
+	//22030683 Hakim
 	public static void viewAllFees(ArrayList<Fee> feeList) {
 		System.out.println(String.format("%-20s %-10s %-15s", "FEE TYPE", "AMOUNT", "DUE DATE"));
 
@@ -414,7 +413,7 @@ private static final int STUDENT_VIEW=3;
 		}
 	}
 
-
+	//22030683 Hakim
 	public static void addFee(ArrayList<Fee> feeList, String feeType, double amount, String dueDate) {
 		Fee newFee = new Fee(feeType, amount, dueDate);
 		feeList.add(newFee);
@@ -473,6 +472,7 @@ private static final int STUDENT_VIEW=3;
 	}
 
 	// ================================= Deleting =================================
+	//22030683 Hakim
 	public static void deleteFee(ArrayList<Fee> feeList, int feeIndex) {
 		if (feeIndex >= 0 && feeIndex < feeList.size()) {
 			feeList.remove(feeIndex);

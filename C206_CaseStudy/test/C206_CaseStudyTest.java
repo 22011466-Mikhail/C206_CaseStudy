@@ -14,7 +14,7 @@ public class C206_CaseStudyTest {
 	private Course C02;
 
 	private ArrayList<Enrolment> EnrolmentList;
-
+	//22030683 Hakim
 	private ArrayList<Fee> feeList;
 
 	private ArrayList<Course> courseList;
@@ -151,6 +151,7 @@ public class C206_CaseStudyTest {
         assertEquals("Test that EnrolmentList size is 0 after deleting",0, EnrolmentList.size());
     }
 	@Test
+	//22030683 Hakim
     public void testAddFee() {
         // Test that feeList is initially empty
         assertEquals("Test that feeList is empty", 0, feeList.size());
@@ -165,6 +166,7 @@ public class C206_CaseStudyTest {
         
     }
 	@Test
+	//22030683 Hakim
 	public void testViewAllFees() {
 	    // After adding 1 fee, test that size of list is 1 - normal
 	    feeList.add(new Fee("Tuition Fee", 1000.0, "2023-09-01"));
@@ -175,6 +177,7 @@ public class C206_CaseStudyTest {
 		
 
     @Test
+  //22030683 Hakim
     public void testDeleteFee() {
         // Add fees to feeList
         feeList.add(new Fee("Tuition Fee", 1000.0, "2023-09-01"));
